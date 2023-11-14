@@ -1,4 +1,7 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bewjv7we810ek"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bewjv7we810ek"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtgin"]
+bg_color = Color(0.156863, 0.168627, 0.188235, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exn1e"]
 bg_color = Color(0.156863, 0.168627, 0.188235, 1)
@@ -11,4 +14,5 @@ expand_margin_right = 30.0
 expand_margin_bottom = 10.0
 
 [resource]
+Button/styles/normal = SubResource("StyleBoxFlat_jtgin")
 Label/styles/normal = SubResource("StyleBoxFlat_exn1e")
