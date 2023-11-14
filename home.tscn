@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwj1hmu2kxjhu"]
 
-[ext_resource type="Texture2D" uid="uid://b0pkhsulmkf12" path="res://imageres/home-bg.jpg" id="1_ipi1g"]
+[ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_7rpyi"]
 [ext_resource type="Theme" uid="uid://bewjv7we810ek" path="res://main-style.tres" id="2_ukui7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7i1od"]
@@ -18,7 +18,7 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 1155.0
 offset_bottom = 650.0
-texture = ExtResource("1_ipi1g")
+texture = ExtResource("1_7rpyi")
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
 layout_mode = 1
@@ -31,14 +31,16 @@ offset_bottom = 40.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 100
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer"]
+[node name="NumberOfWords" type="Label" parent="NinePatchRect/MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 theme = ExtResource("2_ukui7")
-text = "1000
+text = "0
 "
 label_settings = SubResource("LabelSettings_7i1od")
+horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="NinePatchRect/MarginContainer"]
+[node name="WordsLearned" type="Label" parent="NinePatchRect/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 20
