@@ -125,3 +125,11 @@ theme = ExtResource("6_76607")
 [node name="100" type="Button" parent="ParentLayout/Launch Cards/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("7_qcna8")
+
+[connection signal="pressed" from="ParentLayout/RoundButtons/HBoxContainer/DictConfig" to="." method="_on_dict_config_pressed"]
+[connection signal="pressed" from="ParentLayout/RoundButtons/HBoxContainer/About" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="ParentLayout/Launch Cards/HBoxContainer/Learn" to="." method="_on_learn_pressed"]
+[connection signal="pressed" from="ParentLayout/Launch Cards/HBoxContainer/Freeplay" to="." method="_on_freeplay_pressed"]
+[connection signal="pressed" from="ParentLayout/Launch Cards/HBoxContainer/20" to="." method="_on_20_pressed"]
+[connection signal="pressed" from="ParentLayout/Launch Cards/HBoxContainer/50" to="." method="_on_50_pressed"]
+[connection signal="pressed" from="ParentLayout/Launch Cards/HBoxContainer/100" to="." method="_on_100_pressed"]
