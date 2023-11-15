@@ -1,12 +1,21 @@
 extends Control
 
-var DICTIONARY = global.load_json_file("res://dictionaries/dict.json")
+var DICTIONARY_FILE = global.load_json_file("res://dictionaries/dict.json")
+var DICTIONARY: Array = DICTIONARY_FILE['dict']
+
+var allWordCountLabel: Label
 
 func _ready():
-	pass
+	# Set number of learned words (learned:=overshoots treshold)
+	var learned_words: Array = filters.filter_learned_words(DICTIONARY)
+	allWordCountLabel = get_node('ParentLayout/Words Count Display/NumberOfWords')
+	allWordCountLabel.text = str(learned_words.size())
+	
+	global.DICTIONARY = DICTIONARY # Set global dict
+	disable_not_available_card_buttons()
 
 func _on_dict_config_pressed():
-	print(DICTIONARY)
+	get_tree().change_scene_to_file("res://src/scenes/dic_editor.tscn")
 
 func _on_about_pressed():
 	pass # Replace with function body.
@@ -25,3 +34,11 @@ func _on_50_pressed():
 
 func _on_100_pressed():
 	pass # Replace with function body.
+
+# Disable buttons if the correct number of words are not entered
+func disable_not_available_card_buttons():
+	if DICTIONARY.size() < 100: get_node("ParentLayout/Launch Cards/HBoxContainer/100").disabled = true
+	if DICTIONARY.size() < 50: get_node("ParentLayout/Launch Cards/HBoxContainer/50").disabled = true
+	if DICTIONARY.size() < 20: get_node("ParentLayout/Launch Cards/HBoxContainer/20").disabled = true
+	
+

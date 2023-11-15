@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5h1ad3irbrfp"]
+
+[ext_resource type="Script" path="res://src/loading.gd" id="1_f4b3p"]
+[ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_vq5ap"]
+
+[node name="LoadScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f4b3p")
+
+[node name="Bg" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_vq5ap")
+
+[node name="Progress" type="Label" parent="Bg"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 224.0
+offset_right = 680.0
+offset_bottom = 364.0
+theme_override_font_sizes/font_size = 100

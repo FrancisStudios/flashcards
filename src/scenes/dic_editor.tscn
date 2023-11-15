@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqgc36j6unpx7"]
+
+[ext_resource type="Script" path="res://src/dictionary-editor.gd" id="1_gxlef"]
+[ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_hludq"]
+[ext_resource type="Theme" uid="uid://cp5ab148kpkwh" path="res://src/styles/textbox-def.tres" id="2_t46xq"]
+[ext_resource type="Theme" uid="uid://di1u0eq2ykw6s" path="res://src/styles/menu-buttons/default-buttons-theme.tres" id="3_t215i"]
+
+[node name="DicEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gxlef")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_hludq")
+
+[node name="TopBar" type="HBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 896.0
+offset_bottom = 128.0
+theme_override_constants/separation = 20
+
+[node name="Back" type="Button" parent="NinePatchRect/TopBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "<"
+
+[node name="LineEdit" type="LineEdit" parent="NinePatchRect/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_t46xq")
+theme_override_constants/minimum_character_width = 15
+placeholder_text = "word"
+caret_blink = true
+
+[node name="LineEdit2" type="LineEdit" parent="NinePatchRect/TopBar"]
+layout_mode = 2
+theme = ExtResource("2_t46xq")
+theme_override_constants/minimum_character_width = 15
+placeholder_text = "translation"
+
+[node name="ButtonsMargincont" type="MarginContainer" parent="NinePatchRect/TopBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 9
+
+[node name="Button" type="Button" parent="NinePatchRect/TopBar/ButtonsMargincont"]
+layout_mode = 2
+theme = ExtResource("3_t215i")
+theme_override_font_sizes/font_size = 31
+text = "+"
+
+[node name="ItemList" type="ItemList" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 152.0
+offset_right = 896.0
+offset_bottom = 624.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 23
+
+[connection signal="pressed" from="NinePatchRect/TopBar/Back" to="." method="_on_back_pressed"]
