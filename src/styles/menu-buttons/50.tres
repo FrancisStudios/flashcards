@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://emxtbch5vf8w"]
+
+[ext_resource type="Texture2D" uid="uid://dwej4vimkmqtn" path="res://imageres/gamebtns.png" id="1_efvpl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b08kq"]
+texture = ExtResource("1_efvpl")
+region_rect = Rect2(1073, 6097, 853, 1585)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1cekj"]
+texture = ExtResource("1_efvpl")
+region_rect = Rect2(1073, 2097, 853, 1585)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pudbn"]
+content_margin_left = 50.0
+content_margin_right = 50.0
+texture = ExtResource("1_efvpl")
+region_rect = Rect2(1073, 97, 853, 1585)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hgo83"]
+texture = ExtResource("1_efvpl")
+region_rect = Rect2(1033, 4057, 933, 1665)
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxTexture_b08kq")
+Button/styles/hover = SubResource("StyleBoxTexture_1cekj")
+Button/styles/normal = SubResource("StyleBoxTexture_pudbn")
+Button/styles/pressed = SubResource("StyleBoxTexture_hgo83")

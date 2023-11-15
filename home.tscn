@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwj1hmu2kxjhu"]
+[gd_scene load_steps=10 format=3 uid="uid://dwj1hmu2kxjhu"]
 
 [ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_7rpyi"]
 [ext_resource type="Script" path="res://src/menu.gd" id="1_lutdr"]
 [ext_resource type="Theme" uid="uid://bewjv7we810ek" path="res://main-style.tres" id="2_ukui7"]
 [ext_resource type="Theme" uid="uid://bhsxb0kpml2qg" path="res://src/styles/menu-buttons/learn-btn.tres" id="3_me4wh"]
 [ext_resource type="Theme" uid="uid://c4jy3i3fqrgc5" path="res://src/styles/menu-buttons/freeplay-btn.tres" id="4_v273t"]
+[ext_resource type="Theme" uid="uid://b7nloi7ruv848" path="res://src/styles/menu-buttons/20.tres" id="5_6ki64"]
+[ext_resource type="Theme" uid="uid://emxtbch5vf8w" path="res://src/styles/menu-buttons/50.tres" id="6_76607"]
+[ext_resource type="Theme" uid="uid://bnwf7kiw71sju" path="res://src/styles/menu-buttons/100.tres" id="7_qcna8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7i1od"]
 font_size = 100
@@ -39,6 +42,7 @@ layout_direction = 2
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 22
+alignment = 1
 
 [node name="Learn" type="Button" parent="NinePatchRect/MarginContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(100, 200)
@@ -50,6 +54,18 @@ theme = ExtResource("3_me4wh")
 [node name="Freeplay" type="Button" parent="NinePatchRect/MarginContainer2/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_v273t")
+
+[node name="20" type="Button" parent="NinePatchRect/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_6ki64")
+
+[node name="50" type="Button" parent="NinePatchRect/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_76607")
+
+[node name="100" type="Button" parent="NinePatchRect/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_qcna8")
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
 layout_mode = 1
