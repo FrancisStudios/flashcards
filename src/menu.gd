@@ -1,10 +1,12 @@
 extends Control
 
+var DICTIONARY = global.load_json_file("res://dictionaries/dict.json")
+
 func _ready():
 	pass
 
 func _on_dict_config_pressed():
-	pass # Replace with function body.
+	print(DICTIONARY)
 
 func _on_about_pressed():
 	pass # Replace with function body.

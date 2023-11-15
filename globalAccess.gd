@@ -1,9 +1,6 @@
 extends Node
-#
+
 # GENERAL JSON OPERATIONS
-#
-var LOADED_DICTIONARY = {}
-var dict_file_path = ''
 
 func load_json_file(filePath: String):
 	if FileAccess.file_exists(filePath):
