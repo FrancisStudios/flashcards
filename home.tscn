@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwj1hmu2kxjhu"]
+[gd_scene load_steps=11 format=3 uid="uid://dwj1hmu2kxjhu"]
 
 [ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_7rpyi"]
 [ext_resource type="Script" path="res://src/menu.gd" id="1_lutdr"]
 [ext_resource type="Theme" uid="uid://bewjv7we810ek" path="res://main-style.tres" id="2_ukui7"]
 [ext_resource type="Theme" uid="uid://bhsxb0kpml2qg" path="res://src/styles/menu-buttons/learn-btn.tres" id="3_me4wh"]
+[ext_resource type="Theme" uid="uid://di1u0eq2ykw6s" path="res://src/styles/menu-buttons/default-buttons-theme.tres" id="4_te6x4"]
 [ext_resource type="Theme" uid="uid://c4jy3i3fqrgc5" path="res://src/styles/menu-buttons/freeplay-btn.tres" id="4_v273t"]
 [ext_resource type="Theme" uid="uid://b7nloi7ruv848" path="res://src/styles/menu-buttons/20.tres" id="5_6ki64"]
 [ext_resource type="Theme" uid="uid://emxtbch5vf8w" path="res://src/styles/menu-buttons/50.tres" id="6_76607"]
@@ -21,13 +22,71 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lutdr")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="ParentLayout" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_right = 1155.0
 offset_bottom = 650.0
 texture = ExtResource("1_7rpyi")
 
-[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect"]
+[node name="Words Count Display" type="MarginContainer" parent="ParentLayout"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_right = 84.0
+offset_bottom = 240.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 100
+
+[node name="NumberOfWords" type="Label" parent="ParentLayout/Words Count Display"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_ukui7")
+text = "0
+"
+label_settings = SubResource("LabelSettings_7i1od")
+horizontal_alignment = 1
+
+[node name="WordsLearned" type="Label" parent="ParentLayout/Words Count Display"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "words learned"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="RoundButtons" type="MarginContainer" parent="ParentLayout"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -25.5
+offset_right = 73.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ParentLayout/RoundButtons"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="DictConfig" type="Button" parent="ParentLayout/RoundButtons/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_te6x4")
+text = "Dictionary"
+
+[node name="About" type="Button" parent="ParentLayout/RoundButtons/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_te6x4")
+text = "About"
+
+[node name="Launch Cards" type="MarginContainer" parent="ParentLayout"]
 layout_mode = 0
 offset_top = 376.0
 offset_right = 1152.0
@@ -37,60 +96,32 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ParentLayout/Launch Cards"]
 layout_direction = 2
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 22
 alignment = 1
 
-[node name="Learn" type="Button" parent="NinePatchRect/MarginContainer2/HBoxContainer"]
+[node name="Learn" type="Button" parent="ParentLayout/Launch Cards/HBoxContainer"]
 custom_minimum_size = Vector2(100, 200)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme = ExtResource("3_me4wh")
 
-[node name="Freeplay" type="Button" parent="NinePatchRect/MarginContainer2/HBoxContainer"]
+[node name="Freeplay" type="Button" parent="ParentLayout/Launch Cards/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_v273t")
 
-[node name="20" type="Button" parent="NinePatchRect/MarginContainer2/HBoxContainer"]
+[node name="20" type="Button" parent="ParentLayout/Launch Cards/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_6ki64")
 
-[node name="50" type="Button" parent="NinePatchRect/MarginContainer2/HBoxContainer"]
+[node name="50" type="Button" parent="ParentLayout/Launch Cards/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("6_76607")
 
-[node name="100" type="Button" parent="NinePatchRect/MarginContainer2/HBoxContainer"]
+[node name="100" type="Button" parent="ParentLayout/Launch Cards/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("7_qcna8")
-
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme_override_constants/margin_top = 100
-
-[node name="NumberOfWords" type="Label" parent="NinePatchRect/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("2_ukui7")
-text = "0
-"
-label_settings = SubResource("LabelSettings_7i1od")
-horizontal_alignment = 1
-
-[node name="WordsLearned" type="Label" parent="NinePatchRect/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 20
-text = "words learned"
-horizontal_alignment = 1
-uppercase = true

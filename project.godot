@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 global="*res://globalAccess.gd"
 
+[display]
+
+window/size/resizable=false
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
