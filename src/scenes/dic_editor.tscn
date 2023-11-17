@@ -34,7 +34,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "<"
 
-[node name="LineEdit" type="LineEdit" parent="NinePatchRect/TopBar"]
+[node name="Original" type="LineEdit" parent="NinePatchRect/TopBar"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_t46xq")
@@ -42,7 +42,7 @@ theme_override_constants/minimum_character_width = 15
 placeholder_text = "word"
 caret_blink = true
 
-[node name="LineEdit2" type="LineEdit" parent="NinePatchRect/TopBar"]
+[node name="Translation" type="LineEdit" parent="NinePatchRect/TopBar"]
 layout_mode = 2
 theme = ExtResource("2_t46xq")
 theme_override_constants/minimum_character_width = 15
@@ -50,14 +50,24 @@ placeholder_text = "translation"
 
 [node name="ButtonsMargincont" type="MarginContainer" parent="NinePatchRect/TopBar"]
 layout_mode = 2
-theme_override_constants/margin_left = 50
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 9
 
-[node name="Button" type="Button" parent="NinePatchRect/TopBar/ButtonsMargincont"]
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/TopBar/ButtonsMargincont"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Add" type="Button" parent="NinePatchRect/TopBar/ButtonsMargincont/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_t215i")
 theme_override_font_sizes/font_size = 31
 text = "+"
+
+[node name="Remove" type="Button" parent="NinePatchRect/TopBar/ButtonsMargincont/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_t215i")
+theme_override_font_sizes/font_size = 31
+text = "-"
 
 [node name="ItemList" type="ItemList" parent="NinePatchRect"]
 layout_mode = 0
@@ -69,3 +79,5 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 23
 
 [connection signal="pressed" from="NinePatchRect/TopBar/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="NinePatchRect/TopBar/ButtonsMargincont/HBoxContainer/Add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="NinePatchRect/TopBar/ButtonsMargincont/HBoxContainer/Remove" to="." method="_on_remove_pressed"]

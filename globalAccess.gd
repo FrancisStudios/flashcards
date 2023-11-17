@@ -1,6 +1,7 @@
 extends Node
 
 # GLOBAL VARIABLES
+var DICTIONARY_PATH
 var DICTIONARY_FILE
 var DICTIONARY
 
@@ -24,8 +25,12 @@ func load_json_file(filePath: String):
 
 #Write into JSON dictionary
 func write_json_file(original: String, translation: String):
-	if FileAccess.file_exists(DICTIONARY_FILE):
-		var dataFile = FileAccess.open(DICTIONARY_FILE, FileAccess.WRITE)
+	if FileAccess.file_exists(DICTIONARY_PATH):
+		#var dataFile = FileAccess.open(DICTIONARY_PATH, FileAccess.WRITE)
+		var dicEntry = { "original": original, "translation": translation, "success": 0, "fail": 0 }
+		DICTIONARY.append(dicEntry)
+		var readyFile = { "dict": DICTIONARY }
+		print(readyFile)
 		
 	else:
 		print('Invalid file')

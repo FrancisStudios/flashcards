@@ -1,6 +1,7 @@
 extends Control
 
-var DICTIONARY_FILE = global.load_json_file("res://dictionaries/dict.json")
+var DICTIONARY_PATH = "res://dictionaries/dict.json"
+var DICTIONARY_FILE = global.load_json_file(DICTIONARY_PATH)
 var DICTIONARY: Array = DICTIONARY_FILE['dict']
 
 var allWordCountLabel: Label
@@ -11,8 +12,11 @@ func _ready():
 	allWordCountLabel = get_node('ParentLayout/Words Count Display/NumberOfWords')
 	allWordCountLabel.text = str(learned_words.size())
 	
-	global.DICTIONARY_FILE = DICTIONARY_FILE # Set global dict
+	# Set global dict values
+	global.DICTIONARY_PATH = DICTIONARY_PATH 
+	global.DICTIONARY_FILE = DICTIONARY_FILE 
 	global.DICTIONARY = DICTIONARY 
+	
 	disable_not_available_card_buttons()
 
 func _on_dict_config_pressed():
