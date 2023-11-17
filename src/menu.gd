@@ -11,7 +11,8 @@ func _ready():
 	allWordCountLabel = get_node('ParentLayout/Words Count Display/NumberOfWords')
 	allWordCountLabel.text = str(learned_words.size())
 	
-	global.DICTIONARY = DICTIONARY # Set global dict
+	global.DICTIONARY_FILE = DICTIONARY_FILE # Set global dict
+	global.DICTIONARY = DICTIONARY 
 	disable_not_available_card_buttons()
 
 func _on_dict_config_pressed():

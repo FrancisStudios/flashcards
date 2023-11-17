@@ -1,10 +1,13 @@
 extends Node
 
 # GLOBAL VARIABLES
+var DICTIONARY_FILE
 var DICTIONARY
 
 
 # GENERAL JSON OPERATIONS
+
+#Read up JSON dictionary:
 func load_json_file(filePath: String):
 	if FileAccess.file_exists(filePath):
 		var dataFile = FileAccess.open(filePath, FileAccess.READ)
@@ -18,6 +21,14 @@ func load_json_file(filePath: String):
 	else:
 		# If file does not exist -> create new dictionary
 		pass
+
+#Write into JSON dictionary
+func write_json_file(original: String, translation: String):
+	if FileAccess.file_exists(DICTIONARY_FILE):
+		var dataFile = FileAccess.open(DICTIONARY_FILE, FileAccess.WRITE)
+		
+	else:
+		print('Invalid file')
 
 
 # STARS LOGIC
