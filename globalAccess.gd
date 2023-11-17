@@ -5,6 +5,7 @@ var DICTIONARY_PATH
 var DICTIONARY_FILE
 var DICTIONARY
 
+var PRECOMMIT_DICTIONARY
 
 # GENERAL JSON OPERATIONS
 
@@ -23,19 +24,22 @@ func load_json_file(filePath: String):
 		# If file does not exist -> create new dictionary
 		pass
 
-#Write into JSON dictionary
+#Write JSON dictionary but DOES NOT COMMIT TO FILE YET
 func write_json_file(original: String, translation: String):
 	if FileAccess.file_exists(DICTIONARY_PATH):
-		#var dataFile = FileAccess.open(DICTIONARY_PATH, FileAccess.WRITE)
 		var dicEntry = { "original": original, "translation": translation, "success": 0, "fail": 0 }
 		DICTIONARY.append(dicEntry)
 		var readyFile = { "dict": DICTIONARY }
-		print(readyFile)
 		
-	else:
-		print('Invalid file')
+		PRECOMMIT_DICTIONARY = readyFile
 
-
+func commit_json_file():
+	if PRECOMMIT_DICTIONARY != null && PRECOMMIT_DICTIONARY != {}:
+		var dataFile = FileAccess.open(DICTIONARY_PATH, FileAccess.WRITE)
+		var JSONAble = JSON.stringify(PRECOMMIT_DICTIONARY)
+		dataFile.store_string(JSONAble)
+		PRECOMMIT_DICTIONARY = null
+	
 # STARS LOGIC
 func get_stars(success, fail):
 	var success_rate: int = int(round(float((float(success) / float((success + fail))) * 100)))

@@ -8,6 +8,7 @@ func _ready():
 		itemList.add_item(itemText, null, true)
 
 func _on_back_pressed():
+	global.commit_json_file() # If no modifs commit obj will be null
 	get_tree().change_scene_to_file('res://src/scenes/load_screen.tscn')
 
 # BUTTON HANDLERS

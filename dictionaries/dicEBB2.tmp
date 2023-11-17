@@ -1,0 +1,16 @@
+{
+	"dict": [
+		{
+			"original": "word",
+			"translation": "szó",
+			"success": 10,
+			"fail": 5
+		},
+		{
+			"original": "test",
+			"translation": "teszt",
+			"success": 16,
+			"fail": 5
+		}
+	]
+}
