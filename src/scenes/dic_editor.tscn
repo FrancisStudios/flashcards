@@ -81,3 +81,4 @@ theme_override_font_sizes/font_size = 23
 [connection signal="pressed" from="NinePatchRect/TopBar/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="NinePatchRect/TopBar/ButtonsMargincont/HBoxContainer/Add" to="." method="_on_add_pressed"]
 [connection signal="pressed" from="NinePatchRect/TopBar/ButtonsMargincont/HBoxContainer/Remove" to="." method="_on_remove_pressed"]
+[connection signal="item_selected" from="NinePatchRect/ItemList" to="." method="_on_item_list_item_selected"]

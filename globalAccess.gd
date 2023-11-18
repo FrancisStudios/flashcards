@@ -24,7 +24,7 @@ func load_json_file(filePath: String):
 		# If file does not exist -> create new dictionary
 		pass
 
-#Write JSON dictionary but DOES NOT COMMIT TO FILE YET
+# Write JSON dictionary but DOES NOT COMMIT TO FILE YET
 func write_json_file(original: String, translation: String):
 	if FileAccess.file_exists(DICTIONARY_PATH):
 		var dicEntry = { "original": original, "translation": translation, "success": 0, "fail": 0 }
@@ -33,6 +33,20 @@ func write_json_file(original: String, translation: String):
 		
 		PRECOMMIT_DICTIONARY = readyFile
 
+# Remove word from JSON dictionary - DOES NOT COMMIT
+func remove_from_json_file(index):
+	var dictionaryEntries: Array
+	
+	for dictIndex in DICTIONARY.size():
+		if index != dictIndex:
+			dictionaryEntries.append(DICTIONARY[dictIndex])
+	
+	var readyFile = { "dict": dictionaryEntries }
+	
+	DICTIONARY = readyFile["dict"]
+	PRECOMMIT_DICTIONARY = readyFile
+
+# Commits file changes
 func commit_json_file():
 	if PRECOMMIT_DICTIONARY != null && PRECOMMIT_DICTIONARY != {}:
 		var dataFile = FileAccess.open(DICTIONARY_PATH, FileAccess.WRITE)
