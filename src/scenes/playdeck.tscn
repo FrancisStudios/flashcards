@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://2xa46lpx57hr"]
+[gd_scene load_steps=8 format=3 uid="uid://2xa46lpx57hr"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_3n0t4"]
 [ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_hwpo0"]
 [ext_resource type="Theme" uid="uid://di1u0eq2ykw6s" path="res://src/styles/menu-buttons/default-buttons-theme.tres" id="2_a54x4"]
+[ext_resource type="PackedScene" uid="uid://57xr21p705wg" path="res://src/models/card.blend" id="4_355h2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tnlmk"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -45,5 +46,20 @@ text = "<"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture = ExtResource("1_hwpo0")
+
+[node name="QuestionCard" parent="." instance=ExtResource("4_355h2")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -2.37523, 0, 0.181451)
+
+[node name="QuestionCardLabel" type="Label3D" parent="QuestionCard"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, 7.75757e-09, 0.177473, 0)
+modulate = Color(0.717647, 0.717647, 0.717647, 1)
+text = "Blinvader"
+font_size = 102
+uppercase = true
+autowrap_mode = 1
+width = 600.0
+
+[node name="card2" parent="." instance=ExtResource("4_355h2")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 2.73864, -0.0533789, 0.181451)
 
 [connection signal="pressed" from="Camera3D/Control/Back" to="." method="_on_back_pressed"]
