@@ -63,6 +63,8 @@ _data = {
 [node name="Playdeck" type="Node3D"]
 script = ExtResource("1_3n0t4")
 
+[node name="Timer" type="Timer" parent="."]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ew21u")
 
