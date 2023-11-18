@@ -6,7 +6,7 @@ func _ready():
 	var itemList = get_node('NinePatchRect/ItemList')
 	
 	for itemIndex in global.DICTIONARY.size():
-		var itemText = global.DICTIONARY[itemIndex]['original'] + ' = ' +global.DICTIONARY[itemIndex]['translation']
+		var itemText = global.DICTIONARY[itemIndex]['original'] + ' = ' + global.DICTIONARY[itemIndex]['translation']
 		itemList.add_item(itemText, null, true)
 
 func _on_back_pressed():
