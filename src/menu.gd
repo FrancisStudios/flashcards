@@ -25,6 +25,9 @@ func _on_dict_config_pressed():
 func _on_about_pressed():
 	pass # Replace with function body.
 
+func _on_settings_pressed():
+	pass # Replace with function body.
+
 func _on_learn_pressed():
 	pass # Replace with function body.
 
@@ -46,4 +49,3 @@ func disable_not_available_card_buttons():
 	if DICTIONARY.size() < 50: get_node("ParentLayout/Launch Cards/HBoxContainer/50").disabled = true
 	if DICTIONARY.size() < 20: get_node("ParentLayout/Launch Cards/HBoxContainer/20").disabled = true
 	
-

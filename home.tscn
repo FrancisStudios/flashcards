@@ -87,6 +87,11 @@ layout_mode = 2
 theme = ExtResource("4_te6x4")
 text = "About"
 
+[node name="Settings" type="Button" parent="ParentLayout/RoundButtons/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_te6x4")
+text = "Settings"
+
 [node name="Launch Cards" type="MarginContainer" parent="ParentLayout"]
 layout_mode = 0
 offset_top = 376.0
@@ -129,6 +134,7 @@ theme = ExtResource("7_qcna8")
 
 [connection signal="pressed" from="ParentLayout/RoundButtons/HBoxContainer/DictConfig" to="." method="_on_dict_config_pressed"]
 [connection signal="pressed" from="ParentLayout/RoundButtons/HBoxContainer/About" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="ParentLayout/RoundButtons/HBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="ParentLayout/Launch Cards/HBoxContainer/Learn" to="." method="_on_learn_pressed"]
 [connection signal="pressed" from="ParentLayout/Launch Cards/HBoxContainer/Freeplay" to="." method="_on_freeplay_pressed"]
 [connection signal="pressed" from="ParentLayout/Launch Cards/HBoxContainer/20" to="." method="_on_20_pressed"]
