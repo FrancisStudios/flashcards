@@ -6,8 +6,8 @@ var DICTIONARY_FILE
 var DICTIONARY
 var PRECOMMIT_DICTIONARY
 
-var NEXT_SCENE
-var NEXT_SCENE_INSTRUCTIONS
+var NEXT_SCENE: String
+var NEXT_SCENE_INSTRUCTIONS: int
 
 # GENERAL JSON OPERATIONS
 
@@ -87,3 +87,5 @@ var STAR_30 = preload("res://imageres/ico/stars/3.png")
 func init_next_scene(SCENE):
 	global.NEXT_SCENE = SCENE
 	get_tree().change_scene_to_file("res://src/scenes/load_screen.tscn")
+	
+enum SCENE_INSTRUCTIONS { FREEPLAY, TWENTYPLAY, FIFTYPLAY, HUNDREDPLAY }

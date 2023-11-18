@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://2xa46lpx57hr"]
+[gd_scene load_steps=7 format=3 uid="uid://2xa46lpx57hr"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_3n0t4"]
 [ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_hwpo0"]
+[ext_resource type="Theme" uid="uid://di1u0eq2ykw6s" path="res://src/styles/menu-buttons/default-buttons-theme.tres" id="2_a54x4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tnlmk"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -25,5 +26,23 @@ environment = SubResource("Environment_ew21u")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.98223)
 
+[node name="Control" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Back" type="Button" parent="Camera3D/Control"]
+offset_left = 224.0
+offset_top = 48.0
+offset_right = 249.0
+offset_bottom = 98.0
+theme = ExtResource("2_a54x4")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "<"
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture = ExtResource("1_hwpo0")
+
+[connection signal="pressed" from="Camera3D/Control/Back" to="." method="_on_back_pressed"]
