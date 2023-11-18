@@ -33,6 +33,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Back" type="Button" parent="Camera3D/Control"]
+layout_mode = 0
 offset_left = 224.0
 offset_top = 48.0
 offset_right = 249.0
