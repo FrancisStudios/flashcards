@@ -4,8 +4,10 @@ extends Node
 var DICTIONARY_PATH
 var DICTIONARY_FILE
 var DICTIONARY
-
 var PRECOMMIT_DICTIONARY
+
+var NEXT_SCENE
+var NEXT_SCENE_INSTRUCTIONS
 
 # GENERAL JSON OPERATIONS
 
@@ -71,3 +73,17 @@ func get_stars(success, fail):
 		return 0.5
 	elif success_rate < 30:
 		return 0
+		
+# STAR VARS XD - you get the joke
+var STAR_00 = preload("res://imageres/ico/stars/0.png")
+var STAR_05 = preload("res://imageres/ico/stars/0.5.png")
+var STAR_10 = preload("res://imageres/ico/stars/1.png")
+var STAR_15 = preload("res://imageres/ico/stars/1.5.png")
+var STAR_20 = preload("res://imageres/ico/stars/2.png")
+var STAR_25 = preload("res://imageres/ico/stars/2.5.png")
+var STAR_30 = preload("res://imageres/ico/stars/3.png")
+
+# SCENE CHANGE OPERATIONS
+func init_next_scene(SCENE):
+	global.NEXT_SCENE = SCENE
+	get_tree().change_scene_to_file("res://src/scenes/load_screen.tscn")

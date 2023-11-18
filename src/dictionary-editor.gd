@@ -7,19 +7,31 @@ func _ready():
 	
 	for itemIndex in global.DICTIONARY.size():
 		var itemText = global.DICTIONARY[itemIndex]['original'] + ' = ' + global.DICTIONARY[itemIndex]['translation']
-		itemList.add_item(itemText, null, true)
+		var stars = get_star_icons(global.DICTIONARY[itemIndex]['success'], global.DICTIONARY[itemIndex]['fail'])
+		itemList.add_item(itemText, stars, true)
 
 func _on_back_pressed():
 	SELECTED_ITEM = null
 	global.commit_json_file() # If no modifs commit obj will be null
-	get_tree().change_scene_to_file('res://src/scenes/load_screen.tscn')
+	global.init_next_scene('res://home.tscn')
+	
+func get_star_icons(success: int, fail: int):
+	var nStars = global.get_stars(success, fail)
+	match nStars:
+		0: return global.STAR_00
+		0.5: return global.STAR_05
+		1: return global.STAR_10
+		1.5: return global.STAR_15
+		2: return global.STAR_20
+		2.5: return global.STAR_25
+		3: return global.STAR_30
 
 # BUTTON HANDLERS
 func _on_add_pressed():
 	SELECTED_ITEM = null
 	global.write_json_file($NinePatchRect/TopBar/Original.text, $NinePatchRect/TopBar/Translation.text)
 	var newItem = $NinePatchRect/TopBar/Original.text + ' = ' + $NinePatchRect/TopBar/Translation.text
-	get_node('NinePatchRect/ItemList').add_item(newItem, null, true)
+	get_node('NinePatchRect/ItemList').add_item(newItem, global.STAR_00, true)
 	$NinePatchRect/TopBar/Original.text = ''
 	$NinePatchRect/TopBar/Translation.text = '' 
 	

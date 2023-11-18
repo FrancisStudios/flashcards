@@ -32,7 +32,7 @@ func _on_learn_pressed():
 	pass # Replace with function body.
 
 func _on_freeplay_pressed():
-	pass # Replace with function body.
+	global.init_next_scene("res://src/scenes/playdeck.tscn")
 	
 func _on_20_pressed():
 	pass # Replace with function body.

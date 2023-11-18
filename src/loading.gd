@@ -5,7 +5,7 @@ var sceneName
 var sceneLoadStatus = 0
 
 func _ready():
-	sceneName = "res://home.tscn"
+	sceneName = global.NEXT_SCENE
 	ResourceLoader.load_threaded_request(sceneName)
 
 # Loads a scene in a threaded manner
