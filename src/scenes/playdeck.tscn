@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://2xa46lpx57hr"]
+[gd_scene load_steps=12 format=3 uid="uid://2xa46lpx57hr"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_3n0t4"]
 [ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_hwpo0"]
 [ext_resource type="Theme" uid="uid://di1u0eq2ykw6s" path="res://src/styles/menu-buttons/default-buttons-theme.tres" id="2_a54x4"]
+[ext_resource type="Theme" uid="uid://cp5ab148kpkwh" path="res://src/styles/textbox-def.tres" id="3_30uk6"]
 [ext_resource type="PackedScene" uid="uid://57xr21p705wg" path="res://src/models/card.blend" id="4_355h2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tnlmk"]
@@ -88,6 +89,14 @@ theme = ExtResource("2_a54x4")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "<"
+
+[node name="Input" type="LineEdit" parent="Camera3D/Control"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 560.0
+offset_right = 896.0
+offset_bottom = 599.0
+theme = ExtResource("3_30uk6")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture = ExtResource("1_hwpo0")

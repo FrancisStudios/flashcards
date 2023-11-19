@@ -9,7 +9,8 @@ func _ready():
 
 func _process(delta):
 	# print($Timer.time_left)
-	pass
+	if Input.is_action_just_pressed("submit"):
+		print('a word is submited: ' + $Camera3D/Control/Input.text)
 
 func _on_back_pressed():
 	if global.NEXT_SCENE_INSTRUCTIONS == global.SCENE_INSTRUCTIONS.FREEPLAY:
