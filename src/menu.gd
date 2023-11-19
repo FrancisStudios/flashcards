@@ -36,7 +36,8 @@ func _on_freeplay_pressed():
 	global.init_next_scene("res://src/scenes/playdeck.tscn")
 	
 func _on_20_pressed():
-	pass # Replace with function body.
+	global.NEXT_SCENE_INSTRUCTIONS = global.SCENE_INSTRUCTIONS.TWENTYPLAY
+	global.init_next_scene("res://src/scenes/playdeck.tscn")
 
 func _on_50_pressed():
 	pass # Replace with function body.

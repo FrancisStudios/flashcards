@@ -16,6 +16,11 @@ func _ready():
 	else:
 		IS_RANKED = true
 		
+		match global.NEXT_SCENE_INSTRUCTIONS:
+			global.SCENE_INSTRUCTIONS.TWENTYPLAY: generateDictionary(20)
+			global.SCENE_INSTRUCTIONS.FIFTYPLAY: generateDictionary(50)
+			global.SCENE_INSTRUCTIONS.HUNDREDPLAY: generateDictionary(100)
+		
 	# Bootstrap procedure
 	start_card_procedure()
 
@@ -122,3 +127,55 @@ func muteAllFeedbackSignals():
 	$Camera3D/Control/Input.text = ''
 	$Feedback/Success.visible = false
 	$Feedback/Fail.visible = false
+	
+# GENERATORS
+
+# Generators entry
+func generateDictionary(numberOfWords:int):
+	# RULES:
+	# - 50% of words are always low successrate words
+	var lowSuccessRate: int = round(numberOfWords/2)
+	# - 30% of words are not very known words (low show rate)
+	var lowShowRate: int = round(numberOfWords/3)
+	# - 20% (rest) are random other words
+	var repetitoEstMaterStudiorum: int = (numberOfWords - (lowSuccessRate + lowShowRate))
+	
+	var _GENERATED: Array = getLowestSuccessRate(lowSuccessRate) 
+	+ getLeastShown(lowShowRate) 
+	+ getRandom(repetitoEstMaterStudiorum)
+	
+# Returns a list of lowest success rate words
+func getLowestSuccessRate(number: int):
+	var successRates: Array = []
+	var selectedWords: Array = []
+	
+	# Build an array of success rates
+	for word in global.DICTIONARY.size():
+		var success = global.DICTIONARY[word]['success']
+		var fail = global.DICTIONARY[word]['fail']
+		var successRate: int
+		
+		# Eliminate division by zero
+		if success != 0:
+			successRate = int(round(float((float(success) / float((success + fail))) * 100)))
+		else:
+			successRate = 0
+		
+		# Build success rate obj
+		successRates.append({
+			'original': global.DICTIONARY[word]['original'], 
+			'successrate': successRate
+		})
+	
+# Returns a list of least shown words
+func getLeastShown(number: int):
+	pass
+
+# Returns a list of random words
+func getRandom(number: int):
+	var wordList: Array = []
+	while wordList.size() != number:
+		var randIndex = randi_range(0, global.DICTIONARY.size()-1)
+		wordList.append(global.DICTIONARY[randIndex])
+
+	return wordList
