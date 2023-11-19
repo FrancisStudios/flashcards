@@ -57,6 +57,7 @@ func commit_json_file():
 		PRECOMMIT_DICTIONARY = null
 	
 # STARS LOGIC
+
 func get_stars(success, fail):
 	var success_rate: int = int(round(float((float(success) / float((success + fail))) * 100)))
 	if success_rate > 90:
@@ -84,6 +85,7 @@ var STAR_25 = preload("res://imageres/ico/stars/2.5.png")
 var STAR_30 = preload("res://imageres/ico/stars/3.png")
 
 # SCENE CHANGE OPERATIONS
+
 func init_next_scene(SCENE):
 	global.NEXT_SCENE = SCENE
 	get_tree().change_scene_to_file("res://src/scenes/load_screen.tscn")
