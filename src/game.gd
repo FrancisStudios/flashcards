@@ -53,26 +53,36 @@ func flipUpFirstCard():
 # !First path
 func flipUpNextCard():
 	TRANSLATION_DIRECTION = randi_range(0, 1)
+	
+	# While game index is within dictionary constrainsts
 	if GAME_INDEX <= GENERATED_WORDS.size():
-		$QuestionCard/FlipUp.play("flip_question_card")
-		$QuestionCard/FlipUp.queue("swipe_out")
+		$QuestionCard/QuestionCardLabel.text = GENERATED_WORDS[GAME_INDEX][getTransDirection('a')]
 		$QuestionCard/FlipUp.queue("flip_question_card")
-		# $QuestionCard/FlipUp.animation_finished.connect(swipeOutThisCard)
+
 
 # Answer evaluation
 func wordWasSubmitted(answer: String = $Camera3D/Control/Input.text):
 	var transDirection = getTransDirection('b')
-	if answer == GENERATED_WORDS[GAME_INDEX][transDirection]:
+	var SUCCESS: bool = (answer == GENERATED_WORDS[GAME_INDEX][transDirection])
+	
+	# Evaluation
+	if SUCCESS:
 		$Feedback/Success.visible = true
+		givePoints()
+	
 	else:
 		$Feedback/Fail.visible = true
 		$Feedback/Fail/Correction.text = GENERATED_WORDS[GAME_INDEX][transDirection]
+		givePoints()
+	
+	GAME_INDEX = GAME_INDEX + 1
+	swipeOutThisCard()
 
 # Swipe out card and finish evaluation -> init new swess
 func swipeOutThisCard():
-	print('swipe out can happen')
-	print($Timer.time_left)
-	# $Timer.stop()
+	$Timer.stop()
+	$QuestionCard/FlipUp.queue("swipe_out")
+	
 
 # HELPER FNS
 
@@ -82,6 +92,10 @@ func _on_flip_up_animation_finished(anim_name):
 		$Timer.wait_time = TIMER_VALUE
 		$Timer.start()
 		$Timer.timeout.connect(wordWasSubmitted)
+		muteAllFeedbackSignals() # Hide success and fail signals
+		
+	elif anim_name == "swipe_out":
+		flipUpNextCard()
 
 # Get which side of text should be on the answer and the question side
 func getTransDirection(side):
@@ -92,3 +106,16 @@ func getTransDirection(side):
 		'b':
 			if TRANSLATION_DIRECTION == 0 : return 'original' 
 			else: return 'translation'
+
+# Ranking function
+func givePoints():
+	# If ranking needed save points in dict
+		if IS_RANKED:
+			pass
+		else: 
+			pass
+
+# Disable feedback signals
+func muteAllFeedbackSignals():
+	$Feedback/Success.visible = false
+	$Feedback/Fail.visible = false
