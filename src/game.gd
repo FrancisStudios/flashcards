@@ -7,6 +7,8 @@ var IS_RANKED: bool = false
 
 var TRANSLATION_DIRECTION: int # Random number (0, 1) 
 
+var GLOBAL_DICTIONARY_COPY = global.DICTIONARY
+
 # SYSTEM HOOKS
 
 func _ready():
@@ -40,6 +42,9 @@ func _process(delta):
 func _on_back_pressed():
 	if global.NEXT_SCENE_INSTRUCTIONS == global.SCENE_INSTRUCTIONS.FREEPLAY:
 		global.init_next_scene("res://home.tscn")
+	else:
+		# TODO: prompt question if you want to quit or not
+		global.init_next_scene("res://home.tscn")
 
 # GAME CYCLES
 
@@ -69,6 +74,7 @@ func flipUpNextCard():
 
 # Answer evaluation
 func wordWasSubmitted(answer: String = $Camera3D/Control/Input.text):
+	$Camera3D/Control/Input.editable = false
 	var transDirection = getTransDirection('b')
 	var SUCCESS: bool = (answer == GENERATED_WORDS[GAME_INDEX][transDirection])
 	
@@ -96,6 +102,7 @@ func swipeOutThisCard():
 # Peripherial hooks
 func _on_flip_up_animation_finished(anim_name):
 	if anim_name == "flip_question_card":
+		$Camera3D/Control/Input.editable = true
 		$Timer.wait_time = TIMER_VALUE
 		$Timer.start()
 		$Timer.timeout.connect(wordWasSubmitted)
@@ -140,9 +147,10 @@ func generateDictionary(numberOfWords:int):
 	# - 20% (rest) are random other words
 	var repetitoEstMaterStudiorum: int = (numberOfWords - (lowSuccessRate + lowShowRate))
 	
-	var _GENERATED: Array = getLowestSuccessRate(lowSuccessRate) 
-	+ getLeastShown(lowShowRate) 
-	+ getRandom(repetitoEstMaterStudiorum)
+	#var _GENERATED: Array = getLowestSuccessRate(lowSuccessRate) 
+	#+ getLeastShown(lowShowRate) 
+	#+ getRandom(repetitoEstMaterStudiorum)
+	getRandom(numberOfWords)
 	
 # Returns a list of lowest success rate words
 func getLowestSuccessRate(number: int):
@@ -150,9 +158,9 @@ func getLowestSuccessRate(number: int):
 	var selectedWords: Array = []
 	
 	# Build an array of success rates
-	for word in global.DICTIONARY.size():
-		var success = global.DICTIONARY[word]['success']
-		var fail = global.DICTIONARY[word]['fail']
+	for word in GLOBAL_DICTIONARY_COPY.size():
+		var success = GLOBAL_DICTIONARY_COPY[word]['success']
+		var fail = GLOBAL_DICTIONARY_COPY[word]['fail']
 		var successRate: int
 		
 		# Eliminate division by zero
@@ -163,19 +171,33 @@ func getLowestSuccessRate(number: int):
 		
 		# Build success rate obj
 		successRates.append({
-			'original': global.DICTIONARY[word]['original'], 
+			'original': GLOBAL_DICTIONARY_COPY[word]['original'], 
 			'successrate': successRate
 		})
 	
 # Returns a list of least shown words
 func getLeastShown(number: int):
-	pass
+	var wordList: Array = []
+	var showRates: Array = []
+	
+	for word in GLOBAL_DICTIONARY_COPY.size():
+		var showRate = GLOBAL_DICTIONARY_COPY[word]['success'] + GLOBAL_DICTIONARY_COPY[word]['fail']
+		showRates.append(showRate)
+	
+	while wordList.size() != number:
+		var smallest = showRates.min()
+		print(smallest)
+		for word in GLOBAL_DICTIONARY_COPY.size():
+			if GLOBAL_DICTIONARY_COPY[word]['success'] + GLOBAL_DICTIONARY_COPY[word]['fail'] == smallest:
+				wordList.append(word)
+				GLOBAL_DICTIONARY_COPY.erase(word)
 
 # Returns a list of random words
 func getRandom(number: int):
 	var wordList: Array = []
 	while wordList.size() != number:
-		var randIndex = randi_range(0, global.DICTIONARY.size()-1)
-		wordList.append(global.DICTIONARY[randIndex])
+		var randIndex = randi_range(0, GLOBAL_DICTIONARY_COPY.size()-1)
+		wordList.append(GLOBAL_DICTIONARY_COPY[randIndex])
+		GLOBAL_DICTIONARY_COPY.erase(randIndex)
 
 	return wordList
