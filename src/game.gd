@@ -25,7 +25,8 @@ func _process(delta):
 	$Camera3D/Control/ProgressBar.value = timePercentage
 	
 	# Enter submit has happened
-	if Input.is_action_just_pressed("submit"):
+	var timerIsValid: bool = (($Timer.time_left < TIMER_VALUE) && ($Timer.time_left != 0))
+	if Input.is_action_just_pressed("submit") && timerIsValid:
 		wordWasSubmitted($Camera3D/Control/Input.text)
 
 # BUTTON HOOKS
@@ -55,10 +56,11 @@ func flipUpNextCard():
 	TRANSLATION_DIRECTION = randi_range(0, 1)
 	
 	# While game index is within dictionary constrainsts
-	if GAME_INDEX <= GENERATED_WORDS.size():
+	if GAME_INDEX <= (GENERATED_WORDS.size() - 1):
 		$QuestionCard/QuestionCardLabel.text = GENERATED_WORDS[GAME_INDEX][getTransDirection('a')]
 		$QuestionCard/FlipUp.queue("flip_question_card")
-
+	else:
+		global.init_next_scene("res://home.tscn") # TODO: SOME SUCCESS SCREEN (eg 20/20 congrats!!!)
 
 # Answer evaluation
 func wordWasSubmitted(answer: String = $Camera3D/Control/Input.text):
@@ -92,9 +94,9 @@ func _on_flip_up_animation_finished(anim_name):
 		$Timer.wait_time = TIMER_VALUE
 		$Timer.start()
 		$Timer.timeout.connect(wordWasSubmitted)
-		muteAllFeedbackSignals() # Hide success and fail signals
 		
 	elif anim_name == "swipe_out":
+		muteAllFeedbackSignals() # Reset success/fail
 		flipUpNextCard()
 
 # Get which side of text should be on the answer and the question side
@@ -117,5 +119,6 @@ func givePoints():
 
 # Disable feedback signals
 func muteAllFeedbackSignals():
+	$Camera3D/Control/Input.text = ''
 	$Feedback/Success.visible = false
 	$Feedback/Fail.visible = false
