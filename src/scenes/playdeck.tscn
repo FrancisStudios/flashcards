@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://2xa46lpx57hr"]
+[gd_scene load_steps=14 format=3 uid="uid://2xa46lpx57hr"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_3n0t4"]
 [ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_hwpo0"]
 [ext_resource type="Theme" uid="uid://di1u0eq2ykw6s" path="res://src/styles/menu-buttons/default-buttons-theme.tres" id="2_a54x4"]
 [ext_resource type="Theme" uid="uid://cp5ab148kpkwh" path="res://src/styles/textbox-def.tres" id="3_30uk6"]
 [ext_resource type="PackedScene" uid="uid://57xr21p705wg" path="res://src/models/card.blend" id="4_355h2"]
+[ext_resource type="Texture2D" uid="uid://ds81sumn8rm12" path="res://imageres/ico/success.png" id="6_7hor3"]
+[ext_resource type="Texture2D" uid="uid://by1651vealbbp" path="res://imageres/ico/failed.png" id="7_6y2sj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tnlmk"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -92,13 +94,22 @@ text = "<"
 
 [node name="Input" type="LineEdit" parent="Camera3D/Control"]
 layout_mode = 0
-offset_left = 320.0
+offset_left = 288.0
 offset_top = 560.0
-offset_right = 896.0
+offset_right = 864.0
 offset_bottom = 599.0
 theme = ExtResource("3_30uk6")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="Camera3D/Control"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 56.0
+offset_right = 864.0
+offset_bottom = 83.0
+rounded = true
+show_percentage = false
+
+[node name="Background" type="Sprite3D" parent="."]
 texture = ExtResource("1_hwpo0")
 
 [node name="QuestionCard" parent="." instance=ExtResource("4_355h2")]
@@ -120,6 +131,26 @@ libraries = {
 
 [node name="card2" parent="." instance=ExtResource("4_355h2")]
 transform = Transform3D(-0.0104717, 7.62885e-08, 0.999945, -0.999945, 7.54938e-08, -0.0104717, -7.62885e-08, -1, 7.54938e-08, -2.37523, 0, 0.181451)
+
+[node name="Feedback" type="Node3D" parent="."]
+
+[node name="Success" type="Sprite3D" parent="Feedback"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.055, 0.6)
+visible = false
+texture = ExtResource("6_7hor3")
+
+[node name="Fail" type="Sprite3D" parent="Feedback"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.815, 1.2)
+visible = false
+texture = ExtResource("7_6y2sj")
+
+[node name="Correction" type="Label3D" parent="Feedback/Fail"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03, 0)
+modulate = Color(0.956863, 0.262745, 0.211765, 1)
+font_size = 81
+uppercase = true
+autowrap_mode = 1
+width = 600.0
 
 [connection signal="pressed" from="Camera3D/Control/Back" to="." method="_on_back_pressed"]
 [connection signal="animation_finished" from="QuestionCard/FlipUp" to="." method="_on_flip_up_animation_finished"]
