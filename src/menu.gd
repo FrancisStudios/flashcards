@@ -23,10 +23,10 @@ func _on_dict_config_pressed():
 	get_tree().change_scene_to_file("res://src/scenes/dic_editor.tscn")
 
 func _on_about_pressed():
-	pass # Replace with function body.
+	global.init_next_scene("res://src/scenes/about.tscn")
 
 func _on_settings_pressed():
-	pass # Replace with function body.
+	global.init_next_scene("res://src/scenes/settings.tscn")
 
 func _on_learn_pressed():
 	pass # Replace with function body.
