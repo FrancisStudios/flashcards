@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://3l87w8vu6w0h"]
+[gd_scene load_steps=6 format=3 uid="uid://3l87w8vu6w0h"]
 
 [ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_0glgo"]
+[ext_resource type="Script" path="res://src/about.gd" id="1_lqugy"]
+[ext_resource type="Texture2D" uid="uid://cnf6tlarlwdtv" path="res://flashcardslogo.png" id="2_ivu7q"]
+[ext_resource type="Theme" uid="uid://di1u0eq2ykw6s" path="res://src/styles/menu-buttons/default-buttons-theme.tres" id="2_wjt43"]
+[ext_resource type="Texture2D" uid="uid://ci6vgnf5703s0" path="res://imageres/flash-screen.png" id="3_8lc3h"]
 
 [node name="About" type="Control"]
 layout_mode = 3
@@ -9,8 +13,55 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_lqugy")
 
 [node name="ParentLayout" type="NinePatchRect" parent="."]
 offset_right = 1155.0
 offset_bottom = 650.0
 texture = ExtResource("1_0glgo")
+
+[node name="About" type="Label" parent="ParentLayout"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 208.0
+offset_right = 581.0
+offset_bottom = 253.0
+theme_override_font_sizes/font_size = 30
+text = "about flashcards"
+
+[node name="Description" type="Label" parent="ParentLayout"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 272.0
+offset_right = 1700.0
+offset_bottom = 506.0
+text = "Flashcards are a proven method of learning vocabulary. Increase your success in 
+learning a new language or definitions by writing them on flashcards, so you can
+ continously test yourself.
+
+FrancisStudios Flashcards is an OpenSoucre project to make gamified learning 
+availabe for everyone free of charge. You can download, and use this app for
+unlimited time for free, and if you feel like contributing you can do that via github.
+
+GitHub project:  github.com/FrancisStudios/flashcards"
+
+[node name="Back" type="Button" parent="ParentLayout"]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 584.0
+offset_right = 886.0
+offset_bottom = 629.0
+theme = ExtResource("2_wjt43")
+text = "Back"
+
+[node name="Flashcardslogo" type="Sprite2D" parent="."]
+position = Vector2(296, 232)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ivu7q")
+
+[node name="Flash-screen" type="Sprite2D" parent="."]
+position = Vector2(568, 104)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8lc3h")
+
+[connection signal="pressed" from="ParentLayout/Back" to="." method="_on_back_pressed"]

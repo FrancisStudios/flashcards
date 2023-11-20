@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsa8vyx2cqb01"]
+[gd_scene load_steps=5 format=3 uid="uid://dsa8vyx2cqb01"]
 
 [ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_5sp3l"]
+[ext_resource type="Script" path="res://src/settings.gd" id="1_06m4l"]
+[ext_resource type="Theme" uid="uid://cp5ab148kpkwh" path="res://src/styles/textbox-def.tres" id="2_hig6f"]
+[ext_resource type="Theme" uid="uid://di1u0eq2ykw6s" path="res://src/styles/menu-buttons/default-buttons-theme.tres" id="3_kf8cf"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -9,8 +12,101 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_06m4l")
 
-[node name="ParentLayout" type="NinePatchRect" parent="."]
+[node name="Layout" type="NinePatchRect" parent="."]
 offset_right = 1155.0
 offset_bottom = 650.0
 texture = ExtResource("1_5sp3l")
+
+[node name="DictionaryDesc" type="Label" parent="Layout"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 336.0
+offset_right = 890.0
+offset_bottom = 440.0
+text = "When you upgrade to a newer version you can export your dictionary into
+a JSON file and load it into the new application version. You can manually 
+edit the dictionary and add new words or even new functionality to the
+application."
+
+[node name="Title-1" type="Label" parent="Layout"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 80.0
+offset_right = 401.0
+offset_bottom = 125.0
+theme_override_font_sizes/font_size = 30
+text = "Gameplay"
+
+[node name="TimerSettings" type="HBoxContainer" parent="Layout"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 152.0
+offset_right = 662.0
+offset_bottom = 192.0
+
+[node name="Pref" type="Label" parent="Layout/TimerSettings"]
+layout_mode = 2
+text = "available time for answers:"
+
+[node name="seconds" type="LineEdit" parent="Layout/TimerSettings"]
+layout_mode = 2
+theme = ExtResource("2_hig6f")
+
+[node name="Suf" type="Label" parent="Layout/TimerSettings"]
+layout_mode = 2
+text = "seconds"
+
+[node name="Title-2" type="Label" parent="Layout"]
+offset_left = 256.0
+offset_top = 208.0
+offset_right = 404.0
+offset_bottom = 253.0
+theme_override_font_sizes/font_size = 30
+text = "Dictionary"
+
+[node name="DictionarySettings" type="HBoxContainer" parent="Layout"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 280.0
+offset_right = 734.0
+offset_bottom = 325.0
+scale = Vector2(0.8, 0.8)
+theme_override_constants/separation = 61
+
+[node name="FileDialog" type="FileDialog" parent="Layout/DictionarySettings"]
+position = Vector2i(380, 265)
+size = Vector2i(392, 162)
+access = 2
+
+[node name="Export" type="Button" parent="Layout/DictionarySettings"]
+layout_mode = 2
+theme = ExtResource("3_kf8cf")
+text = "Export Current"
+
+[node name="Load" type="Button" parent="Layout/DictionarySettings"]
+layout_mode = 2
+theme = ExtResource("3_kf8cf")
+text = "Load New"
+
+[node name="SaveCancel" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 584.0
+offset_right = 915.0
+offset_bottom = 629.0
+theme_override_constants/separation = 75
+
+[node name="Save" type="Button" parent="SaveCancel"]
+layout_mode = 2
+theme = ExtResource("3_kf8cf")
+text = "Save"
+
+[node name="Cancel" type="Button" parent="SaveCancel"]
+layout_mode = 2
+theme = ExtResource("3_kf8cf")
+text = "Cancel"
+
+[connection signal="pressed" from="SaveCancel/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="SaveCancel/Cancel" to="." method="_on_cancel_pressed"]
