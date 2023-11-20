@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://3l87w8vu6w0h"]
+
+[ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_0glgo"]
+
+[node name="About" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParentLayout" type="NinePatchRect" parent="."]
+offset_right = 1155.0
+offset_bottom = 650.0
+texture = ExtResource("1_0glgo")
