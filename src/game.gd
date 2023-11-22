@@ -12,6 +12,11 @@ var GLOBAL_DICTIONARY_COPY = global.DICTIONARY
 # SYSTEM HOOKS
 
 func _ready():
+	# Load timer from settings
+	var SETTINGS = global.load_json_file("res://dictionaries/settings.json")
+	TIMER_VALUE = float(SETTINGS['timer'])
+	
+	
 	# If ranking is needed
 	if global.NEXT_SCENE_INSTRUCTIONS == global.SCENE_INSTRUCTIONS.FREEPLAY :
 		IS_RANKED = false

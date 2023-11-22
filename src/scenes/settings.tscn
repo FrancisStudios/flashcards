@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsa8vyx2cqb01"]
+[gd_scene load_steps=4 format=3 uid="uid://dsa8vyx2cqb01"]
 
 [ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_5sp3l"]
 [ext_resource type="Script" path="res://src/settings.gd" id="1_06m4l"]
-[ext_resource type="Theme" uid="uid://cp5ab148kpkwh" path="res://src/styles/textbox-def.tres" id="2_hig6f"]
 [ext_resource type="Theme" uid="uid://di1u0eq2ykw6s" path="res://src/styles/menu-buttons/default-buttons-theme.tres" id="3_kf8cf"]
 
 [node name="Settings" type="Control"]
@@ -51,9 +50,8 @@ offset_bottom = 192.0
 layout_mode = 2
 text = "available time for answers:"
 
-[node name="seconds" type="LineEdit" parent="Layout/TimerSettings"]
+[node name="Seconds" type="SpinBox" parent="Layout/TimerSettings"]
 layout_mode = 2
-theme = ExtResource("2_hig6f")
 
 [node name="Suf" type="Label" parent="Layout/TimerSettings"]
 layout_mode = 2
