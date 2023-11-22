@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfx4kman1ignr"]
+
+[ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_a8c3f"]
+[ext_resource type="Script" path="res://src/evaluator.gd" id="1_hvtja"]
+[ext_resource type="Theme" uid="uid://di1u0eq2ykw6s" path="res://src/styles/menu-buttons/default-buttons-theme.tres" id="3_muy1b"]
+
+[node name="Evaluator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hvtja")
+
+[node name="Layout" type="NinePatchRect" parent="."]
+offset_right = 1155.0
+offset_bottom = 650.0
+texture = ExtResource("1_a8c3f")
+
+[node name="Ok" type="Button" parent="Layout"]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 584.0
+offset_right = 886.0
+offset_bottom = 629.0
+theme = ExtResource("3_muy1b")
+text = "OK"
+
+[connection signal="pressed" from="Layout/Ok" to="." method="_on_ok_pressed"]
