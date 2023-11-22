@@ -29,7 +29,8 @@ func _on_settings_pressed():
 	global.init_next_scene("res://src/scenes/settings.tscn")
 
 func _on_learn_pressed():
-	pass # Replace with function body.
+	global.NEXT_SCENE_INSTRUCTIONS = global.SCENE_INSTRUCTIONS.LEARN
+	global.init_next_scene("res://src/scenes/playdeck.tscn")
 
 func _on_freeplay_pressed():
 	global.NEXT_SCENE_INSTRUCTIONS = global.SCENE_INSTRUCTIONS.FREEPLAY
@@ -40,10 +41,12 @@ func _on_20_pressed():
 	global.init_next_scene("res://src/scenes/playdeck.tscn")
 
 func _on_50_pressed():
-	pass # Replace with function body.
-
+	global.NEXT_SCENE_INSTRUCTIONS = global.SCENE_INSTRUCTIONS.FIFTYPLAY
+	global.init_next_scene("res://src/scenes/playdeck.tscn")
+	
 func _on_100_pressed():
-	pass # Replace with function body.
+	global.NEXT_SCENE_INSTRUCTIONS = global.SCENE_INSTRUCTIONS.HUNDREDPLAY
+	global.init_next_scene("res://src/scenes/playdeck.tscn")
 
 # Disable buttons if the correct number of words are not entered
 func disable_not_available_card_buttons():

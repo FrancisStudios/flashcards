@@ -16,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_lqugy")
 
 [node name="ParentLayout" type="NinePatchRect" parent="."]
+layout_mode = 0
 offset_right = 1155.0
 offset_bottom = 650.0
 texture = ExtResource("1_0glgo")

@@ -90,4 +90,4 @@ func init_next_scene(SCENE):
 	global.NEXT_SCENE = SCENE
 	get_tree().change_scene_to_file("res://src/scenes/load_screen.tscn")
 	
-enum SCENE_INSTRUCTIONS { FREEPLAY, TWENTYPLAY, FIFTYPLAY, HUNDREDPLAY }
+enum SCENE_INSTRUCTIONS { LEARN, FREEPLAY, TWENTYPLAY, FIFTYPLAY, HUNDREDPLAY }

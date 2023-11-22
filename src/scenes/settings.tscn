@@ -15,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_06m4l")
 
 [node name="Layout" type="NinePatchRect" parent="."]
+layout_mode = 0
 offset_right = 1155.0
 offset_bottom = 650.0
 texture = ExtResource("1_5sp3l")
@@ -59,6 +60,7 @@ layout_mode = 2
 text = "seconds"
 
 [node name="Title-2" type="Label" parent="Layout"]
+layout_mode = 0
 offset_left = 256.0
 offset_top = 208.0
 offset_right = 404.0

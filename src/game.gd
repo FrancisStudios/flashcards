@@ -33,7 +33,12 @@ func _process(delta):
 	
 	# Enter submit has happened
 	var timerIsValid: bool = (($Timer.time_left < TIMER_VALUE) && ($Timer.time_left != 0))
+	var learnPlay: bool = (global.NEXT_SCENE_INSTRUCTIONS == global.SCENE_INSTRUCTIONS.LEARN)
+	
 	if Input.is_action_just_pressed("submit") && timerIsValid:
+		wordWasSubmitted($Camera3D/Control/Input.text)
+	
+	elif Input.is_action_just_pressed("submit") && learnPlay:
 		wordWasSubmitted($Camera3D/Control/Input.text)
 
 # BUTTON HOOKS
@@ -103,9 +108,11 @@ func swipeOutThisCard():
 func _on_flip_up_animation_finished(anim_name):
 	if anim_name == "flip_question_card":
 		$Camera3D/Control/Input.editable = true
-		$Timer.wait_time = TIMER_VALUE
-		$Timer.start()
-		$Timer.timeout.connect(wordWasSubmitted)
+		
+		if global.NEXT_SCENE_INSTRUCTIONS != global.SCENE_INSTRUCTIONS.LEARN:
+			$Timer.wait_time = TIMER_VALUE
+			$Timer.start()
+			$Timer.timeout.connect(wordWasSubmitted)
 		
 	elif anim_name == "swipe_out":
 		muteAllFeedbackSignals() # Reset success/fail
