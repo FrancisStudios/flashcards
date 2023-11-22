@@ -6,8 +6,9 @@ var TIMER_VALUE: float = 10.0
 var IS_RANKED: bool = false
 
 var TRANSLATION_DIRECTION: int # Random number (0, 1) 
-
 var GLOBAL_DICTIONARY_COPY = global.DICTIONARY
+var RANKED_RESULTS_FOR_SAVING: Array = [] # Ranked results. Save at game finish.
+
 
 # SYSTEM HOOKS
 
@@ -80,6 +81,7 @@ func flipUpNextCard():
 		$QuestionCard/QuestionCardLabel.text = GENERATED_WORDS[GAME_INDEX][getTransDirection('a')]
 		$QuestionCard/FlipUp.queue("flip_question_card")
 	else:
+		print(RANKED_RESULTS_FOR_SAVING)
 		global.init_next_scene("res://home.tscn") # TODO: SOME SUCCESS SCREEN (eg 20/20 congrats!!!)
 
 # Answer evaluation
@@ -91,12 +93,12 @@ func wordWasSubmitted(answer: String = $Camera3D/Control/Input.text):
 	# Evaluation
 	if SUCCESS:
 		$Feedback/Success.visible = true
-		givePoints()
+		givePoints(GENERATED_WORDS[GAME_INDEX], 'success')
 	
 	else:
 		$Feedback/Fail.visible = true
 		$Feedback/Fail/Correction.text = GENERATED_WORDS[GAME_INDEX][transDirection]
-		givePoints()
+		givePoints(GENERATED_WORDS[GAME_INDEX], 'fail')
 	
 	GAME_INDEX = GAME_INDEX + 1
 	swipeOutThisCard()
@@ -134,10 +136,18 @@ func getTransDirection(side):
 			else: return 'translation'
 
 # Ranking function
-func givePoints():
+func givePoints(dictionaryEntry, result):
 	# If ranking needed save points in dict
 		if IS_RANKED:
-			pass
+			match result:
+				'success':
+					dictionaryEntry['success'] = int(dictionaryEntry['success']) + 1
+				'fail':
+					dictionaryEntry['fail'] = int(dictionaryEntry['fail']) + 1
+			
+			# Store result obj for saving
+			RANKED_RESULTS_FOR_SAVING.append(dictionaryEntry)
+			
 		else: 
 			pass
 
