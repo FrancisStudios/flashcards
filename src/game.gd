@@ -81,8 +81,8 @@ func flipUpNextCard():
 		$QuestionCard/QuestionCardLabel.text = GENERATED_WORDS[GAME_INDEX][getTransDirection('a')]
 		$QuestionCard/FlipUp.queue("flip_question_card")
 	else:
-		print(RANKED_RESULTS_FOR_SAVING)
-		global.init_next_scene("res://home.tscn") # TODO: SOME SUCCESS SCREEN (eg 20/20 congrats!!!)
+		global.RANKED.results = RANKED_RESULTS_FOR_SAVING
+		global.init_next_scene("res://src/scenes/evaluator.tscn")
 
 # Answer evaluation
 func wordWasSubmitted(answer: String = $Camera3D/Control/Input.text):
@@ -141,8 +141,10 @@ func givePoints(dictionaryEntry, result):
 		if IS_RANKED:
 			match result:
 				'success':
+					global.RANKED.success = global.RANKED.success + 1
 					dictionaryEntry['success'] = int(dictionaryEntry['success']) + 1
 				'fail':
+					global.RANKED.fail = global.RANKED.fail + 1
 					dictionaryEntry['fail'] = int(dictionaryEntry['fail']) + 1
 			
 			# Store result obj for saving
@@ -172,7 +174,7 @@ func generateDictionary(numberOfWords:int):
 	#var _GENERATED: Array = getLowestSuccessRate(lowSuccessRate) 
 	#+ getLeastShown(lowShowRate) 
 	#+ getRandom(repetitoEstMaterStudiorum)
-	getRandom(numberOfWords)
+	GENERATED_WORDS = getRandom(numberOfWords)
 	
 # Returns a list of lowest success rate words
 func getLowestSuccessRate(number: int):

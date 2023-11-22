@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfx4kman1ignr"]
+[gd_scene load_steps=5 format=3 uid="uid://bfx4kman1ignr"]
 
 [ext_resource type="Texture2D" uid="uid://f3mycp5hxcrh" path="res://imageres/home-bg.png" id="1_a8c3f"]
 [ext_resource type="Script" path="res://src/evaluator.gd" id="1_hvtja"]
 [ext_resource type="Theme" uid="uid://di1u0eq2ykw6s" path="res://src/styles/menu-buttons/default-buttons-theme.tres" id="3_muy1b"]
+[ext_resource type="Texture2D" uid="uid://bd3d7gf5vbg2w" path="res://imageres/emojis/100.png" id="4_c8vq4"]
 
 [node name="Evaluator" type="Control"]
 layout_mode = 3
@@ -14,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_hvtja")
 
 [node name="Layout" type="NinePatchRect" parent="."]
+layout_mode = 0
 offset_right = 1155.0
 offset_bottom = 650.0
 texture = ExtResource("1_a8c3f")
@@ -26,5 +28,30 @@ offset_right = 886.0
 offset_bottom = 629.0
 theme = ExtResource("3_muy1b")
 text = "OK"
+
+[node name="CheerMessage" type="Label" parent="Layout"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 400.0
+offset_right = 868.0
+offset_bottom = 445.0
+theme_override_font_sizes/font_size = 26
+text = "Practice, and you will get even better!"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Points" type="Label" parent="Layout"]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 224.0
+offset_right = 871.0
+offset_bottom = 432.0
+theme_override_font_sizes/font_size = 150
+text = "100/100"
+horizontal_alignment = 1
+
+[node name="CheerEmoji" type="Sprite2D" parent="Layout"]
+position = Vector2(576, 136)
+texture = ExtResource("4_c8vq4")
 
 [connection signal="pressed" from="Layout/Ok" to="." method="_on_ok_pressed"]

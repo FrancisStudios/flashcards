@@ -9,6 +9,7 @@ var PRECOMMIT_DICTIONARY
 var NEXT_SCENE: String
 var NEXT_SCENE_INSTRUCTIONS: int
 
+var RANKED: Dictionary = { 'success': 0, 'fail': 0, 'results': [] }
 
 # GENERAL JSON OPERATIONS
 
