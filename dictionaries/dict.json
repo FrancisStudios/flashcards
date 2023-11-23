@@ -3,85 +3,85 @@
         {
             "fail": 5,
             "original": "word",
-            "success": 15,
+            "success": 12,
             "translation": "szó"
         },
         {
-            "fail": 5,
+            "fail": 6,
             "original": "test",
             "success": 17,
             "translation": "teszt"
         },
         {
-            "fail": 0,
+            "fail": 1,
             "original": "one",
-            "success": 1,
+            "success": 10,
             "translation": "egy"
         },
         {
-            "fail": 1,
+            "fail": 6,
             "original": "two",
-            "success": 3,
+            "success": 20,
             "translation": "kettő"
         },
         {
-            "fail": 0,
+            "fail": 3,
             "original": "three",
-            "success": 2,
+            "success": 12,
             "translation": "három"
         },
         {
             "fail": 0,
             "original": "four",
-            "success": 1,
+            "success": 0,
             "translation": "négy"
         },
         {
-            "fail": 1,
+            "fail": 0,
             "original": "five",
-            "success": 2,
+            "success": 0,
             "translation": "öt"
         },
         {
             "fail": 0,
             "original": "six",
-            "success": 2,
+            "success": 0,
             "translation": "hat"
         },
         {
             "fail": 0,
             "original": "seven",
-            "success": 1,
+            "success": 0,
             "translation": "hét"
         },
         {
             "fail": 0,
             "original": "eight",
-            "success": 3,
+            "success": 0,
             "translation": "nyolc"
         },
         {
-            "fail": 1,
+            "fail": 0,
             "original": "nine",
-            "success": 3,
+            "success": 0,
             "translation": "kilenc"
         },
         {
             "fail": 0,
             "original": "ten",
-            "success": 1,
+            "success": 0,
             "translation": "tíz"
         },
         {
             "fail": 0,
             "original": "eleven",
-            "success": 1,
+            "success": 0,
             "translation": "tizenegy"
         },
         {
-            "fail": 1,
+            "fail": 0,
             "original": "twelve",
-            "success": 12,
+            "success": 1,
             "translation": "tizenkettő"
         },
         {
@@ -93,43 +93,43 @@
         {
             "fail": 0,
             "original": "fourteen",
-            "success": 1,
+            "success": 0,
             "translation": "tizennégy"
         },
         {
             "fail": 0,
             "original": "fifteen",
-            "success": 1,
+            "success": 0,
             "translation": "tizenöt"
         },
         {
-            "fail": 1,
+            "fail": 0,
             "original": "sixteen",
-            "success": 2,
+            "success": 0,
             "translation": "tizenhat"
         },
         {
             "fail": 0,
             "original": "seventeen",
-            "success": 3,
+            "success": 1,
             "translation": "tizenhét"
         },
         {
             "fail": 0,
             "original": "eighteen",
-            "success": 5,
+            "success": 0,
             "translation": "tizennyolc"
         },
         {
-            "fail": 3,
+            "fail": 0,
             "original": "questionable",
             "success": 1,
             "translation": "megkérdőjelezhető"
         },
         {
-            "fail": 1,
+            "fail": 0,
             "original": "unconditional",
-            "success": 10,
+            "success": 1,
             "translation": "feltétlen"
         }
     ]

@@ -14,7 +14,6 @@ func filter_learned_words(dictionary):
 	
 	return RETURN
 
-
 # RETURNS SMALLEST SHOWRATE WORD FROM DICTIONARY
 func get_least_showrate(DICTIONARY):
 	var leastShown
@@ -32,3 +31,33 @@ func get_least_showrate(DICTIONARY):
 			smallest = showRate
 	
 	return leastShown
+	
+	
+# RETURNS LEAST SUCCESSRATE
+func get_least_successrate(DICTIONARY):
+	var leastSuccessrate
+	var smallest: int
+	var divider
+	
+	# Init with first item
+	leastSuccessrate = DICTIONARY[0]
+	divider = (DICTIONARY[0]['success'] + DICTIONARY[0]['fail'])
+	
+	if divider == 0:
+		smallest = 100
+	else:
+		smallest = int(round(float((float((DICTIONARY[0]['success']) / float(divider)) * 100))))
+	
+	# Search loop
+	for dictionaryItem in DICTIONARY:
+		divider = (dictionaryItem['success'] + dictionaryItem['fail'])
+		
+		if divider == 0 || dictionaryItem['success'] == 0:
+			pass
+		else:
+			var successRate = int(round(float((float((dictionaryItem['success']) / float(divider)) * 100))))
+			if successRate <= smallest:
+				leastSuccessrate = dictionaryItem
+				smallest = successRate
+	
+	return leastSuccessrate

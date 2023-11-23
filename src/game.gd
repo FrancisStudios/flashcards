@@ -6,13 +6,17 @@ var TIMER_VALUE: float = 10.0
 var IS_RANKED: bool = false
 
 var TRANSLATION_DIRECTION: int # Random number (0, 1) 
-var GLOBAL_DICTIONARY_COPY = global.DICTIONARY
+var GLOBAL_DICTIONARY_COPY: Array = []
 var RANKED_RESULTS_FOR_SAVING: Array = [] # Ranked results. Save at game finish.
 
 
 # SYSTEM HOOKS
 
 func _ready():
+	# Create a copy from global dict
+	for dictItem in global.DICTIONARY:
+		GLOBAL_DICTIONARY_COPY.append(dictItem)
+	
 	# Load timer from settings
 	var SETTINGS = global.load_json_file("res://dictionaries/settings.json")
 	TIMER_VALUE = float(SETTINGS['timer'])
@@ -25,7 +29,7 @@ func _ready():
 		IS_RANKED = true
 		
 		match global.NEXT_SCENE_INSTRUCTIONS:
-			global.SCENE_INSTRUCTIONS.TWENTYPLAY: generateDictionary(20)
+			global.SCENE_INSTRUCTIONS.TWENTYPLAY: generateDictionary(4)
 			global.SCENE_INSTRUCTIONS.FIFTYPLAY: generateDictionary(50)
 			global.SCENE_INSTRUCTIONS.HUNDREDPLAY: generateDictionary(100)
 		
@@ -171,15 +175,21 @@ func generateDictionary(numberOfWords:int):
 	# - 20% (rest) are random other words
 	var repetitoEstMaterStudiorum: int = (numberOfWords - (lowSuccessRate + lowShowRate))
 	
-	#var _GENERATED: Array = getLowestSuccessRate(lowSuccessRate) 
-	#+ getLeastShown(lowShowRate) 
-	#+ getRandom(repetitoEstMaterStudiorum)
-	GENERATED_WORDS = getRandom(numberOfWords)
-	print(getLeastShown(4))
+	var _GENERATED: Array = getLowestSuccessRate(lowSuccessRate) + getLeastShown(lowShowRate) + getRandom(repetitoEstMaterStudiorum)
+
+	GENERATED_WORDS = _GENERATED
+	
 	
 # Returns a list of lowest success rate words
 func getLowestSuccessRate(number: int):
-	pass
+	var wordList: Array = []
+	
+	while wordList.size() != number:
+		var leastSuccessfulWord = filters.get_least_successrate(GLOBAL_DICTIONARY_COPY)
+		GLOBAL_DICTIONARY_COPY.erase(leastSuccessfulWord)
+		wordList.append(leastSuccessfulWord)
+		
+	return wordList
 	
 # Returns a list of least shown words
 func getLeastShown(number: int):
