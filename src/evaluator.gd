@@ -47,8 +47,6 @@ func writeDictionarySuccessMetrics():
 		
 	for dictRegister in global.DICTIONARY:
 		if _originalsList.has(dictRegister['original']):
-			#here update fail / success metrics and save 
-			#the end result to the dict
 			for record in global.RANKED.results:
 				if record['original'] == dictRegister['original']:
 					dictRegister['success'] = record['success']
