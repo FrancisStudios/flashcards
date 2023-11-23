@@ -13,3 +13,22 @@ func filter_learned_words(dictionary):
 			RETURN.append(dictionary[index])
 	
 	return RETURN
+
+
+# RETURNS SMALLEST SHOWRATE WORD FROM DICTIONARY
+func get_least_showrate(DICTIONARY):
+	var leastShown
+	var smallest: int
+	
+	# Init with first item
+	leastShown = DICTIONARY[0]
+	smallest = (DICTIONARY[0]['success'] + DICTIONARY[0]['fail'])
+	
+	# Search loop
+	for dictionaryItem in DICTIONARY:
+		var showRate = (dictionaryItem['success'] + dictionaryItem['fail'])
+		if  showRate <= smallest:
+			leastShown = dictionaryItem
+			smallest = showRate
+	
+	return leastShown

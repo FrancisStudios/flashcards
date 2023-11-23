@@ -175,46 +175,22 @@ func generateDictionary(numberOfWords:int):
 	#+ getLeastShown(lowShowRate) 
 	#+ getRandom(repetitoEstMaterStudiorum)
 	GENERATED_WORDS = getRandom(numberOfWords)
+	print(getLeastShown(4))
 	
 # Returns a list of lowest success rate words
 func getLowestSuccessRate(number: int):
-	var successRates: Array = []
-	var selectedWords: Array = []
-	
-	# Build an array of success rates
-	for word in GLOBAL_DICTIONARY_COPY.size():
-		var success = GLOBAL_DICTIONARY_COPY[word]['success']
-		var fail = GLOBAL_DICTIONARY_COPY[word]['fail']
-		var successRate: int
-		
-		# Eliminate division by zero
-		if success != 0:
-			successRate = int(round(float((float(success) / float((success + fail))) * 100)))
-		else:
-			successRate = 0
-		
-		# Build success rate obj
-		successRates.append({
-			'original': GLOBAL_DICTIONARY_COPY[word]['original'], 
-			'successrate': successRate
-		})
+	pass
 	
 # Returns a list of least shown words
 func getLeastShown(number: int):
 	var wordList: Array = []
-	var showRates: Array = []
-	
-	for word in GLOBAL_DICTIONARY_COPY.size():
-		var showRate = GLOBAL_DICTIONARY_COPY[word]['success'] + GLOBAL_DICTIONARY_COPY[word]['fail']
-		showRates.append(showRate)
 	
 	while wordList.size() != number:
-		var smallest = showRates.min()
-		print(smallest)
-		for word in GLOBAL_DICTIONARY_COPY.size():
-			if GLOBAL_DICTIONARY_COPY[word]['success'] + GLOBAL_DICTIONARY_COPY[word]['fail'] == smallest:
-				wordList.append(word)
-				GLOBAL_DICTIONARY_COPY.erase(word)
+		var leastShowRateItem = filters.get_least_showrate(GLOBAL_DICTIONARY_COPY)
+		GLOBAL_DICTIONARY_COPY.erase(leastShowRateItem)
+		wordList.append(leastShowRateItem)
+		
+	return wordList
 
 # Returns a list of random words
 func getRandom(number: int):

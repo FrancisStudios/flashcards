@@ -15,7 +15,7 @@
         {
             "fail": 0,
             "original": "one",
-            "success": 0,
+            "success": 1,
             "translation": "egy"
         },
         {
@@ -39,13 +39,13 @@
         {
             "fail": 1,
             "original": "five",
-            "success": 1,
+            "success": 2,
             "translation": "öt"
         },
         {
             "fail": 0,
             "original": "six",
-            "success": 0,
+            "success": 2,
             "translation": "hat"
         },
         {
@@ -57,7 +57,7 @@
         {
             "fail": 0,
             "original": "eight",
-            "success": 1,
+            "success": 3,
             "translation": "nyolc"
         },
         {
@@ -81,7 +81,7 @@
         {
             "fail": 1,
             "original": "twelve",
-            "success": 11,
+            "success": 12,
             "translation": "tizenkettő"
         },
         {
@@ -117,7 +117,7 @@
         {
             "fail": 0,
             "original": "eighteen",
-            "success": 4,
+            "success": 5,
             "translation": "tizennyolc"
         },
         {
