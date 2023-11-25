@@ -75,9 +75,12 @@ offset_bottom = 325.0
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 61
 
-[node name="FileDialog" type="FileDialog" parent="Layout/DictionarySettings"]
-position = Vector2i(380, 265)
-size = Vector2i(392, 162)
+[node name="OpenFileDialog" type="FileDialog" parent="Layout/DictionarySettings"]
+title = "Open a File"
+position = Vector2i(355, 265)
+size = Vector2i(452, 162)
+ok_button_text = "Open"
+file_mode = 0
 access = 2
 
 [node name="Export" type="Button" parent="Layout/DictionarySettings"]
@@ -108,5 +111,7 @@ layout_mode = 2
 theme = ExtResource("3_kf8cf")
 text = "Cancel"
 
+[connection signal="pressed" from="Layout/DictionarySettings/Export" to="." method="_on_export_pressed"]
+[connection signal="pressed" from="Layout/DictionarySettings/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="SaveCancel/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="SaveCancel/Cancel" to="." method="_on_cancel_pressed"]
