@@ -75,10 +75,16 @@ offset_bottom = 325.0
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 61
 
+[node name="ExportFileDialog" type="FileDialog" parent="Layout/DictionarySettings"]
+position = Vector2i(211, 90)
+size = Vector2i(735, 482)
+unresizable = true
+
 [node name="OpenFileDialog" type="FileDialog" parent="Layout/DictionarySettings"]
 title = "Open a File"
-position = Vector2i(355, 265)
-size = Vector2i(452, 162)
+position = Vector2i(211, 90)
+size = Vector2i(735, 482)
+unresizable = true
 ok_button_text = "Open"
 file_mode = 0
 access = 2

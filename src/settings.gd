@@ -30,10 +30,10 @@ func write_settings():
 
 # DICTIONARY FILE DIALOG BUTTONS
 func _on_load_pressed():
-	pass
+	$Layout/DictionarySettings/OpenFileDialog.visible = true
 
 func _on_export_pressed():
-	pass
+	$Layout/DictionarySettings/ExportFileDialog.visible = true
 	
 # WRAP-UP BUTTONS
 func _on_save_pressed():
