@@ -11,7 +11,7 @@ I wrote **flashcards** primarily for friends and for myself, but I decided to op
 - 🍎 Mac: [no stable release yet]()
 
 ## Stack
-This project was created in [GODOT Game Engine](https://godotengine.org/) - special thanks for the project.
+This project was created in [GODOT Game Engine](https://godotengine.org/) - special thanks to this project.
 
 ## Application
 
