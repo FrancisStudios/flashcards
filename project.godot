@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.1", "GL Compatibility")
 boot_splash/bg_color=Color(0.156863, 0.168627, 0.188235, 1)
 boot_splash/image="res://imageres/flash-screen.png"
 config/icon="res://flashcardslogo.png"
+config/windows_native_icon="res://app-icone.ico"
 
 [autoload]
 
