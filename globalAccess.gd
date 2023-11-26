@@ -52,7 +52,7 @@ func remove_from_json_file(index):
 
 # Commits file changes
 func commit_json_file():
-	if PRECOMMIT_DICTIONARY != null && PRECOMMIT_DICTIONARY != {}:
+	if PRECOMMIT_DICTIONARY != null && PRECOMMIT_DICTIONARY.size():
 		var dataFile = FileAccess.open(DICTIONARY_PATH, FileAccess.WRITE)
 		var JSONAble = JSON.stringify(PRECOMMIT_DICTIONARY)
 		dataFile.store_string(JSONAble)

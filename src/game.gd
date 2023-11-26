@@ -29,7 +29,7 @@ func _ready():
 		IS_RANKED = true
 		
 		match global.NEXT_SCENE_INSTRUCTIONS:
-			global.SCENE_INSTRUCTIONS.TWENTYPLAY: generateDictionary(4)
+			global.SCENE_INSTRUCTIONS.TWENTYPLAY: generateDictionary(20)
 			global.SCENE_INSTRUCTIONS.FIFTYPLAY: generateDictionary(50)
 			global.SCENE_INSTRUCTIONS.HUNDREDPLAY: generateDictionary(100)
 		

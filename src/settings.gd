@@ -31,13 +31,34 @@ func write_settings():
 # DICTIONARY FILE DIALOG BUTTONS
 func _on_load_pressed():
 	$Layout/DictionarySettings/OpenFileDialog.visible = true
-
+	
 func _on_export_pressed():
 	$Layout/DictionarySettings/ExportFileDialog.visible = true
 	
+# DICTIONARY FILE DIALOG FILE SELECTED HOOKS
+func _on_open_file_dialog_file_selected(path):
+	var extension = path.split('.')[path.split('.').size()-1]
+	var LOADED_JSON = global.load_json_file(path)
+	
+	if extension == 'json':
+		if LOADED_JSON.has('dict'):
+			global.DICTIONARY_FILE = LOADED_JSON
+			global.DICTIONARY = global.DICTIONARY_FILE['dict']
+			global.PRECOMMIT_DICTIONARY = { 'dict': global.DICTIONARY }
+			global.commit_json_file()
+			$Layout/JSONSuccess.text = 'Successful loading. New dictionary is ready!'
+		else:
+			$Layout/JSONError.text = 'Error: Invalid dictionary format'
+	else:
+		$Layout/JSONError.text = 'Error: Only JSON format supported'
+
+func _on_export_file_dialog_dir_selected(dir):
+	print(dir) 
+		
 # WRAP-UP BUTTONS
 func _on_save_pressed():
 	write_settings()
 
 func _on_cancel_pressed():
 	global.init_next_scene("res://home.tscn")
+

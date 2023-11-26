@@ -19,6 +19,21 @@ offset_right = 1155.0
 offset_bottom = 650.0
 texture = ExtResource("1_5sp3l")
 
+[node name="JSONError" type="Label" parent="Layout"]
+layout_mode = 2
+offset_left = 317.6
+offset_top = 455.2
+offset_right = 524.6
+offset_bottom = 481.2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+
+[node name="JSONSuccess" type="Label" parent="Layout"]
+offset_left = 317.6
+offset_top = 455.2
+offset_right = 524.6
+offset_bottom = 481.2
+theme_override_colors/font_color = Color(0, 0.572549, 0.188235, 1)
+
 [node name="DictionaryDesc" type="Label" parent="Layout"]
 layout_mode = 0
 offset_left = 320.0
@@ -76,9 +91,13 @@ scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 61
 
 [node name="ExportFileDialog" type="FileDialog" parent="Layout/DictionarySettings"]
+title = "Open a Directory"
 position = Vector2i(211, 90)
 size = Vector2i(735, 482)
 unresizable = true
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
 
 [node name="OpenFileDialog" type="FileDialog" parent="Layout/DictionarySettings"]
 title = "Open a File"
@@ -117,6 +136,8 @@ layout_mode = 2
 theme = ExtResource("3_kf8cf")
 text = "Cancel"
 
+[connection signal="dir_selected" from="Layout/DictionarySettings/ExportFileDialog" to="." method="_on_export_file_dialog_dir_selected"]
+[connection signal="file_selected" from="Layout/DictionarySettings/OpenFileDialog" to="." method="_on_open_file_dialog_file_selected"]
 [connection signal="pressed" from="Layout/DictionarySettings/Export" to="." method="_on_export_pressed"]
 [connection signal="pressed" from="Layout/DictionarySettings/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="SaveCancel/Save" to="." method="_on_save_pressed"]
