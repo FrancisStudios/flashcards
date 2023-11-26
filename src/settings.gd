@@ -53,7 +53,12 @@ func _on_open_file_dialog_file_selected(path):
 		$Layout/JSONError.text = 'Error: Only JSON format supported'
 
 func _on_export_file_dialog_dir_selected(dir):
-	print(dir) 
+	dir = dir + '/flashcards-exported-dictionary.json'
+	var dataFile = FileAccess.open(dir, FileAccess.WRITE)
+	var JSONAble = JSON.stringify({'dict': global.DICTIONARY})
+	dataFile.store_string(JSONAble)
+	$Layout/JSONSuccess.text = 'File exported to ' + dir
+
 		
 # WRAP-UP BUTTONS
 func _on_save_pressed():
