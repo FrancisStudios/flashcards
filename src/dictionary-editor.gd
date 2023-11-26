@@ -29,11 +29,20 @@ func get_star_icons(success: int, fail: int):
 # BUTTON HANDLERS
 func _on_add_pressed():
 	SELECTED_ITEM = null
-	global.write_json_file($NinePatchRect/TopBar/Original.text, $NinePatchRect/TopBar/Translation.text)
-	var newItem = $NinePatchRect/TopBar/Original.text + ' = ' + $NinePatchRect/TopBar/Translation.text
-	get_node('NinePatchRect/ItemList').add_item(newItem, global.STAR_00, true)
-	$NinePatchRect/TopBar/Original.text = ''
-	$NinePatchRect/TopBar/Translation.text = '' 
+	# Inputs
+	var WORD_ORIGINAL = $NinePatchRect/TopBar/Original.text
+	var WORD_TRANSLATION = $NinePatchRect/TopBar/Translation.text
+
+	if checkIfLegitInputIsProvided(WORD_ORIGINAL) && checkIfLegitInputIsProvided(WORD_TRANSLATION):
+		$NinePatchRect/ErrorMessage.text = ''
+		global.write_json_file($NinePatchRect/TopBar/Original.text, $NinePatchRect/TopBar/Translation.text)
+		var newItem = $NinePatchRect/TopBar/Original.text + ' = ' + $NinePatchRect/TopBar/Translation.text
+		get_node('NinePatchRect/ItemList').add_item(newItem, global.STAR_00, true)
+		$NinePatchRect/TopBar/Original.text = ''
+		$NinePatchRect/TopBar/Translation.text = '' 
+	else: 
+		$NinePatchRect/ErrorMessage.text = 'Invalid input provided!'
+		pass
 	
 func _on_remove_pressed():
 	if SELECTED_ITEM != null:
@@ -41,4 +50,12 @@ func _on_remove_pressed():
 		get_node('NinePatchRect/ItemList').remove_item(SELECTED_ITEM)
 		
 func _on_item_list_item_selected(index):
-	SELECTED_ITEM = index;
+	SELECTED_ITEM = index
+	
+func checkIfLegitInputIsProvided(input) -> bool:
+	var validEntry: bool = (input != null) && (input != '')
+	var noQuoteMarks: bool = (input.split('"').size() == 1)
+	var noBrackets: bool = (input.split('[').size() == 1) && (input.split(']').size() == 1)
+	var noBraces: bool = (input.split('{').size() == 1) && (input.split('}').size() == 1)
+	
+	return validEntry && noQuoteMarks && noBrackets && noBraces

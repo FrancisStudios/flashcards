@@ -28,6 +28,7 @@ offset_bottom = 481.2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 
 [node name="JSONSuccess" type="Label" parent="Layout"]
+layout_mode = 0
 offset_left = 317.6
 offset_top = 455.2
 offset_right = 524.6
