@@ -1,12 +1,31 @@
 extends Control
 
-var DICTIONARY_PATH = "res://dictionaries/dict.json"
-var DICTIONARY_FILE = global.load_json_file(DICTIONARY_PATH)
-var DICTIONARY: Array = DICTIONARY_FILE['dict']
+var DICTIONARY_PATH
+var DICTIONARY_FILE
+var DICTIONARY: Array 
 
 var allWordCountLabel: Label
 
 func _ready():
+	# Select environment
+	match global.ENV:
+		global.ENVIRONMENTS.PROD:
+			if installer.checkInstallation() == installer.INSTALLATION.COMPLETE:
+				# If it's already installed
+				pass
+			elif installer.checkInstallation() == installer.INSTALLATION.NOT_INSTALLED:
+				# Install new
+				installer.install()
+				DICTIONARY_PATH = installer.PATH_DICT
+				DICTIONARY_FILE = global.load_json_file(DICTIONARY_PATH)
+				DICTIONARY = DICTIONARY_FILE['dict']
+				$Label.text = installer.TEST_PATH
+		
+		global.ENVIRONMENTS.DEV: # Use res:// resource bundle
+			DICTIONARY_PATH = "res://dictionaries/dict.json"
+			DICTIONARY_FILE = global.load_json_file(DICTIONARY_PATH)
+			DICTIONARY = DICTIONARY_FILE['dict']
+	
 	# Set number of learned words (learned:=overshoots treshold)
 	var learned_words: Array = filters.filter_learned_words(DICTIONARY)
 	allWordCountLabel = get_node('ParentLayout/Words Count Display/NumberOfWords')

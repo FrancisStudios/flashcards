@@ -20,22 +20,24 @@ offset_bottom = 650.0
 texture = ExtResource("1_5sp3l")
 
 [node name="JSONError" type="Label" parent="Layout"]
+custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 offset_left = 317.6
 offset_top = 455.2
 offset_right = 524.6
 offset_bottom = 481.2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+autowrap_mode = 1
 
 [node name="JSONSuccess" type="Label" parent="Layout"]
-custom_minimum_size = Vector2(600, 0)
+custom_minimum_size = Vector2(550, 0)
 layout_mode = 0
 offset_left = 317.6
 offset_top = 455.2
 offset_right = 524.6
 offset_bottom = 481.2
 theme_override_colors/font_color = Color(0, 0.572549, 0.188235, 1)
-autowrap_mode = 2
+autowrap_mode = 1
 
 [node name="DictionaryDesc" type="Label" parent="Layout"]
 layout_mode = 0

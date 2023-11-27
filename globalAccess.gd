@@ -1,5 +1,8 @@
 extends Node
 
+# ENVIRONMENT
+var ENV = ENVIRONMENTS.PROD
+
 # GLOBAL VARIABLES
 var DICTIONARY_PATH
 var DICTIONARY_FILE
@@ -22,8 +25,7 @@ func load_json_file(filePath: String):
 		if parsedFile is Dictionary:
 			return parsedFile
 		else: 
-			print('File is invalid')
-			
+			print('File is invalid')	
 	else:
 		# If file does not exist -> create new dictionary
 		pass
@@ -93,3 +95,4 @@ func init_next_scene(SCENE):
 	get_tree().change_scene_to_file("res://src/scenes/load_screen.tscn")
 	
 enum SCENE_INSTRUCTIONS { LEARN, FREEPLAY, TWENTYPLAY, FIFTYPLAY, HUNDREDPLAY }
+enum ENVIRONMENTS { PROD, DEV, TEST }

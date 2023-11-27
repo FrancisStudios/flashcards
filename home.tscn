@@ -132,6 +132,13 @@ theme = ExtResource("6_76607")
 layout_mode = 2
 theme = ExtResource("7_qcna8")
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 48.0
+offset_right = 296.0
+offset_bottom = 71.0
+
 [connection signal="pressed" from="ParentLayout/RoundButtons/HBoxContainer/DictConfig" to="." method="_on_dict_config_pressed"]
 [connection signal="pressed" from="ParentLayout/RoundButtons/HBoxContainer/About" to="." method="_on_about_pressed"]
 [connection signal="pressed" from="ParentLayout/RoundButtons/HBoxContainer/Settings" to="." method="_on_settings_pressed"]

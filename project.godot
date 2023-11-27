@@ -21,6 +21,7 @@ config/windows_native_icon="res://app-icone.ico"
 [autoload]
 
 global="*res://globalAccess.gd"
+installer="*res://src/installer.gd"
 filters="*res://src/filters.gd"
 
 [display]
