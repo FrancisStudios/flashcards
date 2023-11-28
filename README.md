@@ -6,7 +6,7 @@ I wrote **flashcards** primarily for friends and for myself, but I decided to op
 
 ## Releases
 
-- 🪟 Windows: [2.0.0 beta (unstable prerelease)](./Release/Windows/)
+- 🪟 Windows: [v2.1.5](./Release/Windows/)
 - 🐧 Linux: [no stable release yet]()
 - 🍎 Mac: [no stable release yet]()
 
