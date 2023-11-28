@@ -18,12 +18,15 @@ func _ready():
 		GLOBAL_DICTIONARY_COPY.append(dictItem)
 	
 	# Load timer from settings
-	var SETTINGS = global.load_json_file("res://dictionaries/settings.json")
+	var SETTINGS = global.load_json_file(global.SETTINGS_PATH)
 	TIMER_VALUE = float(SETTINGS['timer'])
 	
+	# Ranked criteria
+	var IS_FREEPLAY: bool = (global.NEXT_SCENE_INSTRUCTIONS == global.SCENE_INSTRUCTIONS.FREEPLAY)
+	var IS_LEARN: bool = (global.NEXT_SCENE_INSTRUCTIONS == global.SCENE_INSTRUCTIONS.LEARN)
 	
 	# If ranking is needed
-	if global.NEXT_SCENE_INSTRUCTIONS == global.SCENE_INSTRUCTIONS.FREEPLAY :
+	if IS_FREEPLAY || IS_LEARN :
 		IS_RANKED = false
 	else:
 		IS_RANKED = true
@@ -85,8 +88,13 @@ func flipUpNextCard():
 		$QuestionCard/QuestionCardLabel.text = GENERATED_WORDS[GAME_INDEX][getTransDirection('a')]
 		$QuestionCard/FlipUp.queue("flip_question_card")
 	else:
-		global.RANKED.results = RANKED_RESULTS_FOR_SAVING
-		global.init_next_scene("res://src/scenes/evaluator.tscn")
+		match IS_RANKED:
+			true:
+				global.RANKED.results = RANKED_RESULTS_FOR_SAVING
+				global.init_next_scene("res://src/scenes/evaluator.tscn")
+			false:
+				RANKED_RESULTS_FOR_SAVING = []
+				global.init_next_scene("res://home.tscn")
 
 # Answer evaluation
 func wordWasSubmitted(answer: String = $Camera3D/Control/Input.text):

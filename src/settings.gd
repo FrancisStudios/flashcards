@@ -1,10 +1,10 @@
 extends Control
 
 var SETTINGS: Dictionary
-var SETTINGS_PATH: String = "res://dictionaries/settings.json"
+var SETTINGS_PATH: String = global.SETTINGS_PATH
 
 func _ready():
-	SETTINGS = global.load_json_file("res://dictionaries/settings.json")
+	SETTINGS = global.load_json_file(SETTINGS_PATH)
 	
 	#load values
 	$Layout/TimerSettings/Seconds.value = SETTINGS['timer']
