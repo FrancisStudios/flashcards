@@ -19,7 +19,6 @@ func _ready():
 				DICTIONARY_PATH = installer.PATH_DICT
 				DICTIONARY_FILE = global.load_json_file(DICTIONARY_PATH)
 				DICTIONARY = DICTIONARY_FILE['dict']
-				$Label.text = installer.TEST_PATH
 		
 		global.ENVIRONMENTS.DEV: # Use res:// resource bundle
 			DICTIONARY_PATH = "res://dictionaries/dict.json"
