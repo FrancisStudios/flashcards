@@ -26,9 +26,8 @@ func install():
 
 # Private write objects
 func writeObject(path: String, object: Dictionary):
-	var file = FileAccess.open(path, FileAccess.WRITE)
-	TEST_PATH = str(file)
-	var JSONAble = JSON.stringify(object)
-	file.store_string(JSONAble)
+	var objectFile = FileAccess.open(path, FileAccess.WRITE)
+	var JSONStringified = JSON.stringify(object)
+	objectFile.store_string(JSONStringified)
 
 enum INSTALLATION { NOT_INSTALLED, INSTALLING, COMPLETE }
