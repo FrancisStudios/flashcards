@@ -15,7 +15,7 @@ I wrote **flashcards** primarily for friends and for myself, but I decided to op
 
 ![](./docs/img/file-system.png)
 
-At the first opening the internal installer will run and create a flashcard folder next to itself where your dictionary and settings are stored in JSON files.
+At the first opening the internal installer will run and **create a flashcards folder** next to itself where your dictionary and settings are stored in JSON files.
 
 **If this does not happen, the application can not work properly**
 
