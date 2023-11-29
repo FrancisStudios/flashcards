@@ -8,7 +8,16 @@ I wrote **flashcards** primarily for friends and for myself, but I decided to op
 
 - 🪟 Windows: [v2.1.5](./Release/Windows/)
 - 🐧 Linux: [v2.1.5](./Release/Linux/)
-- 🍎 Mac: [no stable release yet]()
+
+## Installation
+
+**Download the executable** from the **links above**, and put it into a location where you can find it easily and the executable has access to create files and read - write privileges are available.
+
+![](./docs/img/file-system.png)
+
+At the first opening the internal installer will run and create a flashcard folder next to itself where your dictionary and settings are stored in JSON files.
+
+**If this does not happen, the application can not work properly**
 
 ## Stack
 This project was created in [GODOT Game Engine](https://godotengine.org/) - special thanks to this project.
@@ -63,3 +72,13 @@ In the dictionary editor you can see how successful you are in each word. The su
 	elif success_rate < 30:
 		return 0
 ```
+
+### Settings
+
+In the settings you can import a dictionary from an external source, sou you can share your learning between multiple computers, or share dictionaries between friends. 
+
+![](./docs/img/settings.png)
+
+Also you can set the timer for ranked games so you'll have enough time to type your answers in. Make sure that the timer is adjusted to your typing speed.
+
+DEFAULT=10
